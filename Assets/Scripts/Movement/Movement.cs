@@ -424,23 +424,20 @@ public class Movement : MonoBehaviour
     }
     #endregion
 
-    private void OnMove(InputAction.CallbackContext ctx)
+    private void OnMove(InputValue value)
     {
-        _moveInput = ctx.ReadValue<Vector2>();
+        _moveInput = value.Get<Vector2>();
     }
 
-    private void OnJump(InputAction.CallbackContext ctx)
+    private void OnJump(InputValue value)
     {
-        if (ctx.performed)
+        if (value.isPressed)
         {
             OnJumpInput();
         }
-        else if (ctx.canceled)
+        else
         {
             OnJumpUpInput();
         }  
     }
-
-
-
 }
