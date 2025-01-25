@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Bubble
+  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -47,6 +48,9 @@ TagManager:
     locked: 0
   - name: Platforms
     uniqueID: 1399372497
+    locked: 0
+  - name: Eel
+    uniqueID: 666261397
     locked: 0
   m_RenderingLayers:
   - Default

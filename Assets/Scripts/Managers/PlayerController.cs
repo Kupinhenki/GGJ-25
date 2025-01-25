@@ -1,61 +1,56 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using static GameManager;
+using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(PlayerInput))]
 public class PlayerController : MonoBehaviour
 {
-    public enum PlayerState
+    [SerializeField] LifeSpawnSelector _lifeSpawnSelector;
+    [SerializeField] Camera _camera;
+    public LifeSpawnSelector lifeSpawnSelector => _lifeSpawnSelector;
+    
+    [SerializeField] Movement _player;
+    
+    int _numOfLives = LifeSpawnSelector.MAX_LIVES;
+    public int numOfLives
     {
-        None,
-        // Might not be needed for anything
-        ChoosingBubbleSpawns,
-        Playing,
-        Ghost
+        get => _numOfLives;
+        set
+        {
+            int oldNumOfLives = numOfLives;
+            _numOfLives = Mathf.Max(value, 0);
+
+            if (oldNumOfLives == _numOfLives)
+            {
+                return;
+            }
+            
+            _lifeSpawnSelector.lifeBar.SetLives(numOfLives);
+
+            if (_numOfLives != 0)
+            {
+                return;
+            }
+            
+            _player.isGhostMode = true;
+            onPlayerDeath.Invoke();
+        }
     }
 
-    public GameObject playerVisualization;
-    public GameObject ghostVisualization;
+    public UnityEvent onPlayerDeath;
+    
+    PlayerInput _playerInput;
+    public PlayerInput playerInput => _playerInput;
 
-    public PlayerState currentPlayerState = PlayerState.None;
-    public int numOfLives = 3;
-
-    public UnityEvent OnPlayerDeath;
-    public UnityEvent<PlayerState> OnPlayerStateChanged;
-
-    private GameManager manager;
-
-
-    private void Start()
+    void Awake()
     {
-        OnPlayerDeath.AddListener(HandleDeathEvent);
-        OnPlayerStateChanged.AddListener(HandlePlayerStateChange);
-
-        manager = GameManager.Instance;
-        manager.OnGameStateChanged.AddListener(HandleGameStateChange);
+        _playerInput = GetComponent<PlayerInput>();
     }
-
-    void Update()
+    
+    void Start()
     {
-        if (numOfLives <= 0 && currentPlayerState != PlayerState.Ghost)
-        {
-            currentPlayerState = PlayerState.Ghost;
-            HandlePlayerStateChange(currentPlayerState);
-        }
-
-        switch (currentPlayerState)
-        {
-            case PlayerState.None: 
-                break;
-            case PlayerState.ChoosingBubbleSpawns:
-                break;
-            case PlayerState.Playing:
-                break;
-            case PlayerState.Ghost:
-                break;
-            default:
-                break;
-        }
+        onPlayerDeath.AddListener(HandleDeathEvent);
+        GameManager.Instance?.OnGameStateChanged.AddListener(HandleGameStateChange);
     }
 
     /// <summary>
@@ -64,49 +59,17 @@ public class PlayerController : MonoBehaviour
     /// TODO: Needs a bit of thinking what 
     /// </summary>
     /// <param name="gameState"></param>
-    private void HandleGameStateChange(GameState gameState)
+    public void HandleGameStateChange(GameState gameState)
     {
         switch(gameState)
         {
-            case GameState.None:
-                break;
             case GameState.LifeBubbleSpawn:
-                playerVisualization.SetActive(false);
-                ghostVisualization.SetActive(false);
+                _camera.gameObject.SetActive(false);
+                _player.gameObject.SetActive(false);
                 break;
             case GameState.OnGoing:
-                currentPlayerState = PlayerState.Playing;
-                break;
-            case GameState.Paused:
-                break;
-            case GameState.Ended:
-                currentPlayerState = PlayerState.None;
-                break;
-            default:
-                break;
-        }
-    }
-
-    private void HandlePlayerStateChange(PlayerState playerState)
-    {
-        switch(playerState)
-        {
-            case PlayerState.None:
-                break;
-            case PlayerState.ChoosingBubbleSpawns:
-                // Tähän valinta controlleri päälle
-                break;
-            case PlayerState.Playing:
-                // Tähän perus movement controlleri päälle
-                playerVisualization.SetActive(true);
-                break;
-            case PlayerState.Ghost:
-                // Tähän ghost controlleri päälle
-                playerVisualization.SetActive(false);
-                ghostVisualization.SetActive(true);
-                OnPlayerDeath.Invoke();
-                break;
-            default:
+                _player.gameObject.SetActive(true);
+                _camera.gameObject.SetActive(true);
                 break;
         }
     }
@@ -114,5 +77,64 @@ public class PlayerController : MonoBehaviour
     private void HandleDeathEvent()
     {
 
+    }
+    
+    // Life Spawn
+    
+    void OnSelect1() => SelectSpawn(0);
+    void OnSelect2() => SelectSpawn(1);
+    void OnSelect3() => SelectSpawn(2);
+    void OnSelect4() => SelectSpawn(3);
+    void OnSelect5() => SelectSpawn(4);
+    void OnSelect6() => SelectSpawn(5);
+    void OnSelect7() => SelectSpawn(6);
+    void OnSelect8() => SelectSpawn(7);
+
+    void SelectSpawn(int index)
+    {
+        Debug.Log(index);
+        if (GameManager.Instance.currentGameState != GameState.LifeBubbleSpawn)
+        {
+            return;
+        }
+        
+        _lifeSpawnSelector.SelectSpawn(index);
+    }
+    
+    void OnTryStartGame()
+    {
+        if (GameManager.Instance.currentGameState != GameState.LifeBubbleSpawn)
+        {
+            return;
+        }
+        
+        _lifeSpawnSelector.TryStartGame();
+    }
+
+    void OnUndo()
+    {
+        if (GameManager.Instance.currentGameState != GameState.LifeBubbleSpawn)
+        {
+            return;
+        }
+        
+        if (!_lifeSpawnSelector.TryUndo())
+        {
+            // PlayerInputManager.OnPlayerLeft gets triggered
+            // when GameObject with PlayerInput is destroyed or disabled
+            Destroy(gameObject);
+        }
+    }
+    
+    // Movement
+    
+    void OnMove(InputValue value)
+    {
+        _player.SetMove(value);
+    }
+
+    void OnJump(InputValue value)
+    {
+        _player.SetJump(value);
     }
 }
