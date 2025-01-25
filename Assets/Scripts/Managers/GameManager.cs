@@ -134,6 +134,8 @@ public class GameManager : MonoBehaviour
     private GameObject SpawnLifeBubble(int index, PlayerController creator)
     {
         GameObject instantiatedPrefab = Instantiate(lifeBubblePrefab, bubbleLocations[index].position, Quaternion.identity);
+        bubbleLocations[index].GetComponent<BubblePointHandler>().orbsList.Add(instantiatedPrefab);
+        instantiatedPrefab.GetComponent<LifeBubble>().pointHandler = bubbleLocations[index].GetComponent<BubblePointHandler>();
         instantiatedPrefab.GetComponent<LifeBubble>().owner = creator;
         return instantiatedPrefab;
     }
