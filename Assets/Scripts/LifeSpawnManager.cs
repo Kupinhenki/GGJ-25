@@ -9,7 +9,8 @@ public class LifeSpawnManager : MonoBehaviour
     [SerializeField] GameObject _joinText;
     [SerializeField] GameObject _startText;
     [SerializeField] Camera _mainCamera;
-    [SerializeField] SpriteRenderer _mapBounds; 
+    [SerializeField] SpriteRenderer _mapBounds;
+    [SerializeField] GameObject[] _locationIconPrefabs = new GameObject[8];
     
     readonly List<PlayerController> _players = new();
     readonly HashSet<LifeSpawnSelector> _readySelectors = new();
@@ -18,7 +19,9 @@ public class LifeSpawnManager : MonoBehaviour
 
     void Awake()
     {
-        _mainCamera.transform.position = _mapBounds.transform.position;
+        Vector3 pos = _mapBounds.transform.position;
+        pos.z = _mainCamera.transform.position.z;
+        _mainCamera.transform.position = pos;
     }
 
     void Start()
@@ -27,6 +30,13 @@ public class LifeSpawnManager : MonoBehaviour
         PlayerInputManager.instance.onPlayerLeft += PlayerLeft;
         _startText.gameObject.SetActive(isReadyToStart);
         _joinText.gameObject.SetActive(_players.Count == 0);
+        
+        for (int i = 0; i < GameManager.Instance.bubbleLocations.Length; i++)
+        {
+            Transform location = GameManager.Instance.bubbleLocations[i];
+            GameObject locationIcon = Instantiate(_locationIconPrefabs[i], transform);
+            locationIcon.transform.position = location.position;
+        }
     }
 
     void LateUpdate()
