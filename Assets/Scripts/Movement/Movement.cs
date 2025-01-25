@@ -59,6 +59,8 @@ public class Movement : MonoBehaviour
 
     [Header("Layers & Tags")]
     [SerializeField] private LayerMask _groundLayer;
+
+    private float ghostCooldown = 7;
     #endregion
 
     private void Awake()
@@ -88,6 +90,15 @@ public class Movement : MonoBehaviour
             gameObject.layer = LayerMask.NameToLayer("Ghost");
             SetGravityScale(0);
             HandleGhostModeMovement();
+
+            // Play ghost sound on random intervals
+            ghostCooldown -= Time.deltaTime;
+            if(ghostCooldown <= 0)
+            {
+                ghostCooldown = Random.Range(7, 15);
+                AudioManager.Instance.PlaySoundFromAnimationEvent("Ghost");
+            }
+
             return;
         }
 
@@ -473,6 +484,7 @@ public class Movement : MonoBehaviour
         if (value.isPressed)
         {
             OnJumpInput();
+            AudioManager.Instance.PlaySoundFromAnimationEvent("Jump");
         }
         else
         {
