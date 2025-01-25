@@ -160,9 +160,11 @@ public class GameManager : MonoBehaviour
 
     public void AddPlayers(PlayerBubbleData[] bubbleDatas)
     {
-        foreach(PlayerBubbleData data in bubbleDatas)
+        for (int i = 0; i < bubbleDatas.Length; i++)
         {
+            PlayerBubbleData data = bubbleDatas[i];
             players.Add(data);
+            data.controller.playerId = i;
             data.controller.onPlayerDeath.AddListener(DoSomethingWhenPlayerDies); 
         }
 

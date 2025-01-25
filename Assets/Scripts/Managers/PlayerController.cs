@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.Universal;
 
 [RequireComponent(typeof(PlayerInput))]
 public class PlayerController : MonoBehaviour
@@ -10,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public LifeSpawnSelector lifeSpawnSelector => _lifeSpawnSelector;
     
     public Movement movement;
+    public int playerId;
     
     int _numOfLives = LifeSpawnSelector.MAX_LIVES;
     public int numOfLives
@@ -68,6 +70,7 @@ public class PlayerController : MonoBehaviour
                 movement.gameObject.SetActive(false);
                 break;
             case GameState.OnGoing:
+                _camera.GetComponent<UniversalAdditionalCameraData>().volumeLayerMask |= (1 << LayerMask.NameToLayer("P" + (playerId + 1)));              
                 movement.gameObject.SetActive(true);
                 _camera.gameObject.SetActive(true);
                 break;
