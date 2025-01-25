@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 1f6953ec005c04845b01f399020cf8f5
+guid: 67be82922f485428399c9628414c253b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5926930008743487481
-    second: LevelDesignV3_0
+      213: 6609894105642088411
+    second: effects_0
+  - first:
+      213: 1957107745717523172
+    second: effects_1
+  - first:
+      213: -3914910146244942373
+    second: effects_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: LevelDesignV3_0
+      name: effects_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 2560
-        height: 1810
+        x: 39
+        y: 792
+        width: 178
+        height: 177
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +121,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 708dd3c2f805fbda0800000000000000
-      internalID: -5926930008743487481
+      spriteID: bd7beb91baf0bbb50800000000000000
+      internalID: 6609894105642088411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: effects_1
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 796
+        width: 173
+        height: 171
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e298a2202b092b10800000000000000
+      internalID: 1957107745717523172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: effects_2
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 806
+        width: 117
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd56f7dc6f17ba9c0800000000000000
+      internalID: -3914910146244942373
       vertices: []
       indices: 
       edges: []
@@ -134,8 +184,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      LevelDesignV3_0: -5926930008743487481
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,10 +1,22 @@
 fileFormatVersion: 2
-guid: 1f6953ec005c04845b01f399020cf8f5
+guid: 448a21a471b3643f4b8c3d3e6883970f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5926930008743487481
-    second: LevelDesignV3_0
+      213: -731737417637225561
+    second: Platformit_1_0
+  - first:
+      213: -2494152143427727696
+    second: Platformit_1_1
+  - first:
+      213: 1132151196832619645
+    second: Platformit_1_2
+  - first:
+      213: 8448855207865478779
+    second: Platformit_1_3
+  - first:
+      213: 9085622802120984906
+    second: Platformit_1_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +49,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +63,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 256
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,10 +84,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,13 +112,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: LevelDesignV3_0
+      name: Platformit_1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 2560
-        height: 1810
+        width: 768
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +127,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 708dd3c2f805fbda0800000000000000
-      internalID: -5926930008743487481
+      spriteID: 7ab1fd012b858d5f0800000000000000
+      internalID: -731737417637225561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Platformit_1_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 230
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0be063317ddf26dd0800000000000000
+      internalID: -2494152143427727696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Platformit_1_2
+      rect:
+        serializedVersion: 2
+        x: 757
+        y: 230
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7cdd3fd38536bf00800000000000000
+      internalID: 1132151196832619645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Platformit_1_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 220
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7ee78f2c0d504570800000000000000
+      internalID: 8448855207865478779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Platformit_1_4
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 220
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a494c930dcd961e70800000000000000
+      internalID: 9085622802120984906
       vertices: []
       indices: 
       edges: []
@@ -135,7 +235,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      LevelDesignV3_0: -5926930008743487481
+      Platformit_1_0: -731737417637225561
+      Platformit_1_1: -2494152143427727696
+      Platformit_1_2: 1132151196832619645
+      Platformit_1_3: 8448855207865478779
+      Platformit_1_4: 9085622802120984906
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
