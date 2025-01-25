@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -74,6 +75,7 @@ public class GameManager : MonoBehaviour
             SwitchGameState(GameState.Ended);
         }
 
+        // Ei v‰ltsii tarvita t‰t‰ p‰tk‰‰?
         switch(currentGameState)
         {
             case GameState.None:
@@ -91,11 +93,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Switches the current game state.
+    /// </summary>
+    /// <param name="newState"></param>
     public void SwitchGameState(GameState newState)
     {
         currentGameState = newState;
         OnGameStateChanged.Invoke(currentGameState);
     }
+
 
     private void HandleGameStateChanged(GameState newState)
     {
@@ -166,10 +173,15 @@ public class GameManager : MonoBehaviour
         player.numOfLives--;
     }
 
-    public void AddPlayer(PlayerBubbleData player)
+    public void AddPlayers(PlayerBubbleData[] bubbleDatas)
     {
-        players.Add(player);
-        player.controller.OnPlayerDeath.AddListener(DoSomethingWhenPlayerDies);
+        foreach(PlayerBubbleData data in bubbleDatas)
+        {
+            players.Add(data);
+            data.controller.OnPlayerDeath.AddListener(DoSomethingWhenPlayerDies);
+        }
+
+        SwitchGameState(GameState.OnGoing);
     }
 
     private void DoSomethingWhenPlayerDies()
