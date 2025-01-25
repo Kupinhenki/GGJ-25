@@ -53,6 +53,8 @@ public class GameManager : MonoBehaviour
 
     public UnityEvent<GameState> OnGameStateChanged;
 
+    public GameObject endScreenCanvas;
+
     /// <summary>
     /// Singleton initialization
     /// </summary>
@@ -100,6 +102,10 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.Ended:
                 // Show end screen
+                if(endScreenCanvas != null)
+                {
+                    endScreenCanvas.SetActive(true);
+                }
                 break;
             default:
                 break;

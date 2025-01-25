@@ -85,6 +85,8 @@ public class Movement : MonoBehaviour
     {
         if (isGhostMode)
         {
+            gameObject.layer = LayerMask.NameToLayer("Ghost");
+            SetGravityScale(0);
             HandleGhostModeMovement();
             return;
         }
