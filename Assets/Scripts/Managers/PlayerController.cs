@@ -102,7 +102,11 @@ public class PlayerController : MonoBehaviour
 
     void SelectSpawn(int index)
     {
-        Debug.Log(index);
+        if (GameManager.Instance == null)
+        {
+            return;
+        }
+        
         if (GameManager.Instance.currentGameState != GameState.LifeBubbleSpawn)
         {
             return;
@@ -113,6 +117,11 @@ public class PlayerController : MonoBehaviour
     
     void OnTryStartGame()
     {
+        if (GameManager.Instance == null)
+        {
+            return;
+        }
+        
         if (GameManager.Instance.currentGameState != GameState.LifeBubbleSpawn)
         {
             return;
@@ -123,6 +132,11 @@ public class PlayerController : MonoBehaviour
 
     void OnUndo()
     {
+        if (GameManager.Instance == null)
+        {
+            return;
+        }
+        
         if (GameManager.Instance.currentGameState != GameState.LifeBubbleSpawn)
         {
             return;

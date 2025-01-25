@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,11 +9,17 @@ public class LifeSpawnManager : MonoBehaviour
     [SerializeField] GameObject _joinText;
     [SerializeField] GameObject _startText;
     [SerializeField] Camera _mainCamera;
+    [SerializeField] SpriteRenderer _mapBounds; 
     
     readonly List<PlayerController> _players = new();
     readonly HashSet<LifeSpawnSelector> _readySelectors = new();
     
     bool isReadyToStart => _readySelectors.Count == _players.Count && _players.Count > 1;
+
+    void Awake()
+    {
+        _mainCamera.transform.position = _mapBounds.transform.position;
+    }
 
     void Start()
     {
@@ -20,6 +27,23 @@ public class LifeSpawnManager : MonoBehaviour
         PlayerInputManager.instance.onPlayerLeft += PlayerLeft;
         _startText.gameObject.SetActive(isReadyToStart);
         _joinText.gameObject.SetActive(_players.Count == 0);
+    }
+
+    void LateUpdate()
+    {
+        float screenRatio = (float)Screen.width / Screen.height;
+            
+        Bounds bounds = _mapBounds.bounds;
+        float targetRatio = bounds.size.x / bounds.size.y;
+        if (screenRatio >= targetRatio)
+        {
+            _mainCamera.orthographicSize = bounds.size.y / 2;
+        }
+        else
+        {
+            float scale = targetRatio / screenRatio;
+            _mainCamera.orthographicSize = bounds.size.y / 2 * scale;
+        }
     }
 
     void PlayerJoined(PlayerInput playerInput)
