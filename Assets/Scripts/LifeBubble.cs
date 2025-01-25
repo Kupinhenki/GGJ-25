@@ -16,11 +16,10 @@ public class LifeBubble : MonoBehaviour
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.GetComponent<PlayerController>() != owner)
+        if(collision.gameObject.GetComponent<Movement>() != owner.movement)
         {
             manager.LoseLife(owner);
+            Destroy(gameObject);
         }
-
-        Destroy(gameObject);
     }
 }

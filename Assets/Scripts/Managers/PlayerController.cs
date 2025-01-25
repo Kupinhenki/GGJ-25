@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Camera _camera;
     public LifeSpawnSelector lifeSpawnSelector => _lifeSpawnSelector;
     
-    [SerializeField] Movement _player;
+    public Movement movement;
     
     int _numOfLives = LifeSpawnSelector.MAX_LIVES;
     public int numOfLives
@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
                 return;
             }
             
-            _player.isGhostMode = true;
+            movement.isGhostMode = true;
             onPlayerDeath.Invoke();
         }
     }
@@ -65,11 +65,14 @@ public class PlayerController : MonoBehaviour
         {
             case GameState.LifeBubbleSpawn:
                 _camera.gameObject.SetActive(false);
-                _player.gameObject.SetActive(false);
+                movement.gameObject.SetActive(false);
                 break;
             case GameState.OnGoing:
-                _player.gameObject.SetActive(true);
+                movement.gameObject.SetActive(true);
                 _camera.gameObject.SetActive(true);
+                break;
+            case GameState.Ended:
+                movement.gameObject.SetActive(false);
                 break;
         }
     }
@@ -130,11 +133,11 @@ public class PlayerController : MonoBehaviour
     
     void OnMove(InputValue value)
     {
-        _player.SetMove(value);
+        movement.SetMove(value);
     }
 
     void OnJump(InputValue value)
     {
-        _player.SetJump(value);
+        movement.SetJump(value);
     }
 }

@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lifeSpawnSelector: {fileID: 5866141837025254442}
   _camera: {fileID: 7719165921638874703}
-  _player: {fileID: 6626977148893211249}
+  movement: {fileID: 6626977148893211249}
   onPlayerDeath:
     m_PersistentCalls:
       m_Calls: []
