@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.Universal;
 
 [RequireComponent(typeof(PlayerInput))]
 public class PlayerController : MonoBehaviour
@@ -10,6 +11,8 @@ public class PlayerController : MonoBehaviour
     public LifeSpawnSelector lifeSpawnSelector => _lifeSpawnSelector;
     
     public Movement movement;
+    private Shoot shoot;
+    public int playerId;
     
     int _numOfLives = LifeSpawnSelector.MAX_LIVES;
     public int numOfLives
@@ -45,6 +48,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         _playerInput = GetComponent<PlayerInput>();
+        shoot = movement.GetComponent<Shoot>();
     }
     
     void Start()
@@ -68,6 +72,7 @@ public class PlayerController : MonoBehaviour
                 movement.gameObject.SetActive(false);
                 break;
             case GameState.OnGoing:
+                _camera.GetComponent<UniversalAdditionalCameraData>().volumeLayerMask |= (1 << LayerMask.NameToLayer("P" + (playerId + 1)));              
                 movement.gameObject.SetActive(true);
                 _camera.gameObject.SetActive(true);
                 break;
@@ -79,7 +84,9 @@ public class PlayerController : MonoBehaviour
 
     private void HandleDeathEvent()
     {
-
+        FindFirstObjectByType<VisualEffectController>().ActivateDeadState(playerId);
+        //Change sprite to dead sprite
+        Debug.Log("Player " + playerId + " is dead");
     }
     
     // Life Spawn
@@ -139,5 +146,13 @@ public class PlayerController : MonoBehaviour
     void OnJump(InputValue value)
     {
         movement.SetJump(value);
+    }
+
+    void OnAttack(InputValue value)
+    {
+        if (value.isPressed)
+        {
+            shoot.ShootBubble();
+        }
     }
 }
