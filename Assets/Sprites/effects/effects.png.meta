@@ -188,10 +188,10 @@ TextureImporter:
       name: effects_3
       rect:
         serializedVersion: 2
-        x: 674
-        y: 694
-        width: 300
-        height: 305
+        x: 687
+        y: 707
+        width: 274
+        height: 279
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -202,6 +202,50 @@ TextureImporter:
       bones: []
       spriteID: f6e4f4e4bf7960442a225aa000c31a46
       internalID: -703465326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: effects_4
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 451
+        width: 278
+        height: 246
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2862c59c382ec7b4281a5a0a39bbe061
+      internalID: 279869320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: effects_5
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 439
+        width: 303
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fe818bb5c60d344daf2f1f466d276ba
+      internalID: 1610858127
       vertices: []
       indices: 
       edges: []
@@ -224,6 +268,8 @@ TextureImporter:
       effects_1: 1957107745717523172
       effects_2: -3914910146244942373
       effects_3: -703465326
+      effects_4: 279869320
+      effects_5: 1610858127
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

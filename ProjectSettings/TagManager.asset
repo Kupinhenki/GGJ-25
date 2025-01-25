@@ -49,6 +49,9 @@ TagManager:
   - name: Platforms
     uniqueID: 1399372497
     locked: 0
+  - name: TrapsAndPickables
+    uniqueID: 1014062407
+    locked: 0
   - name: Player
     uniqueID: 693305753
     locked: 0
