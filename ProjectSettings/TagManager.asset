@@ -55,5 +55,8 @@ TagManager:
   - name: Eel
     uniqueID: 666261397
     locked: 0
+  - name: Absolute Foreground
+    uniqueID: 3323669133
+    locked: 0
   m_RenderingLayers:
   - Default

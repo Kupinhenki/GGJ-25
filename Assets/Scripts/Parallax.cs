@@ -3,20 +3,22 @@ using UnityEngine;
 public class Parallax : MonoBehaviour
 {
 
-    private float startPos;
+    private float startPosX, startPosY;
     public GameObject player;
-    public float parallaxAmount;
+    public float parallaxAmountX, parallaxAmountY;
 
     void Start()
     {
-        startPos = transform.position.x;
+        startPosX = transform.position.x;
+        startPosY = transform.position.y;
         
     }
     void FixedUpdate()
     {
-        float distance = (player.transform.position.x * parallaxAmount);
+        float distanceX = (player.transform.position.x * parallaxAmountX);
+        float distanceY = (player.transform.position.y * parallaxAmountY);
 
-        transform.position = new Vector3(startPos + distance, transform.position.y, transform.position.z);
+        transform.position = new Vector3(startPosX + distanceX, startPosY + distanceY, transform.position.z);
 
     }
 }
