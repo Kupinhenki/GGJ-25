@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TestMat
-  m_Shader: {fileID: -6465566751694194690, guid: b1abb21f71986f546805c6b3171d1ab4, type: 3}
+  m_Name: DamageMat
+  m_Shader: {fileID: -6465566751694194690, guid: 2b38854037b6f104e8bce6efb97f6678, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -37,12 +37,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _NoiseIntensity: 2.02
-    - _NoisePower: 2.39
-    - _NoiseSpeed: 1.42
-    - _VignetteIntensity: 0
-    - _VignettePower: 1
+    - _CellDensity: 5
+    - _NoiseIntensity: 1
+    - _NoisePower: 2.65
+    - _NoiseSpeed: 5.11
+    - _VignetteIntensity: 1.54
+    - _VignettePower: 4.43
     m_Colors:
-    - _VignetteColor: {r: 0, g: 0.00088596344, b: 1, a: 0}
+    - _VignetteColor: {r: 1, g: 0.06757407, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

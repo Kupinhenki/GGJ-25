@@ -82,7 +82,9 @@ public class PlayerController : MonoBehaviour
 
     private void HandleDeathEvent()
     {
-
+        FindFirstObjectByType<VisualEffectController>().ActivateDeadState(playerId);
+        //Change sprite to dead sprite
+        Debug.Log("Player " + playerId + " is dead");
     }
     
     // Life Spawn
