@@ -5,6 +5,9 @@ public class LifeBubble : MonoBehaviour
     public PlayerController owner;
     private GameManager manager;
 
+    public float currentAngle;
+    public BubblePointHandler pointHandler;
+
     private void Start()
     {
         manager = GameManager.Instance;
@@ -16,9 +19,12 @@ public class LifeBubble : MonoBehaviour
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.GetComponent<Movement>() != owner.movement)
+        Movement refe = collision.gameObject.GetComponent<Movement>();
+
+        if (refe != owner.movement && refe != null)
         {
             manager.LoseLife(owner);
+            pointHandler.orbsList.Remove(gameObject);
             Destroy(gameObject);
         }
     }

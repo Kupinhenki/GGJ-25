@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public LifeSpawnSelector lifeSpawnSelector => _lifeSpawnSelector;
     
     public Movement movement;
+    private Shoot shoot;
     public int playerId;
     
     int _numOfLives = LifeSpawnSelector.MAX_LIVES;
@@ -47,6 +48,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         _playerInput = GetComponent<PlayerInput>();
+        shoot = movement.GetComponent<Shoot>();
     }
     
     void Start()
@@ -144,5 +146,13 @@ public class PlayerController : MonoBehaviour
     void OnJump(InputValue value)
     {
         movement.SetJump(value);
+    }
+
+    void OnAttack(InputValue value)
+    {
+        if (value.isPressed)
+        {
+            shoot.ShootBubble();
+        }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+[RequireComponent(typeof(Shoot))]
 public class Movement : MonoBehaviour
 {
     //Scriptable object which holds all the player's movement parameters. If you don't want to use it
