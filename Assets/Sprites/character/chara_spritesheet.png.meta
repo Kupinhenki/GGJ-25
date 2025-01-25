@@ -61,7 +61,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -99,7 +99,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -120,6 +120,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -127,12 +140,12 @@ TextureImporter:
       name: chara_spritesheet_0
       rect:
         serializedVersion: 2
-        x: 49
-        y: 1541
-        width: 468
-        height: 353
+        x: 0
+        y: 1536
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -149,12 +162,12 @@ TextureImporter:
       name: chara_spritesheet_1
       rect:
         serializedVersion: 2
-        x: 544
-        y: 1543
-        width: 452
-        height: 359
+        x: 512
+        y: 1536
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -171,12 +184,12 @@ TextureImporter:
       name: chara_spritesheet_2
       rect:
         serializedVersion: 2
-        x: 1071
-        y: 1541
-        width: 436
-        height: 353
+        x: 1024
+        y: 1536
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -193,12 +206,12 @@ TextureImporter:
       name: chara_spritesheet_3
       rect:
         serializedVersion: 2
-        x: 1608
-        y: 1533
-        width: 410
-        height: 355
+        x: 1536
+        y: 1536
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -215,12 +228,12 @@ TextureImporter:
       name: chara_spritesheet_4
       rect:
         serializedVersion: 2
-        x: 2121
-        y: 1541
-        width: 412
-        height: 353
+        x: 2048
+        y: 1536
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -237,12 +250,12 @@ TextureImporter:
       name: chara_spritesheet_5
       rect:
         serializedVersion: 2
-        x: 2633
-        y: 1544
-        width: 411
-        height: 358
+        x: 2560
+        y: 1536
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -259,12 +272,12 @@ TextureImporter:
       name: chara_spritesheet_6
       rect:
         serializedVersion: 2
-        x: 3145
-        y: 1541
-        width: 411
-        height: 353
+        x: 3072
+        y: 1536
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -281,12 +294,12 @@ TextureImporter:
       name: chara_spritesheet_7
       rect:
         serializedVersion: 2
-        x: 3655
-        y: 1533
-        width: 410
-        height: 355
+        x: 3584
+        y: 1536
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -303,12 +316,12 @@ TextureImporter:
       name: chara_spritesheet_8
       rect:
         serializedVersion: 2
-        x: 73
-        y: 1020
-        width: 411
-        height: 355
+        x: 0
+        y: 1024
+        width: 512
+        height: 512
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -325,7 +338,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: dc9c4282cf752ae4a9ac32d6e6a34e7c
     internalID: 0
     vertices: []
     indices: 
@@ -344,6 +357,24 @@ TextureImporter:
       chara_spritesheet_6: 1494894879031546073
       chara_spritesheet_7: -5093304302112760209
       chara_spritesheet_8: -1095096012465593546
+    nameFileIdTable:
+      chara_spritesheet_0: 3682887421031680377
+      chara_spritesheet_1: 8440733827689261035
+      chara_spritesheet_10: -2135301070
+      chara_spritesheet_11: -696350426
+      chara_spritesheet_12: 1108913009
+      chara_spritesheet_13: 1125774420
+      chara_spritesheet_14: -1997538600
+      chara_spritesheet_15: 58954903
+      chara_spritesheet_16: -1148391740
+      chara_spritesheet_2: 5489938513714001356
+      chara_spritesheet_3: 4937057174624205962
+      chara_spritesheet_4: 1643184726295653748
+      chara_spritesheet_5: 2057213318142560030
+      chara_spritesheet_6: 1494894879031546073
+      chara_spritesheet_7: -5093304302112760209
+      chara_spritesheet_8: -1095096012465593546
+      chara_spritesheet_9: 1457170520
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

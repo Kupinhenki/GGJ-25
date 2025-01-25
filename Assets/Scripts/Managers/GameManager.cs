@@ -3,18 +3,24 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
+public enum GameState
+{
+    LifeBubbleSpawn,
+    OnGoing,
+    Paused,
+    Ended
+}
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-
-    public enum GameState
+#if UNITY_EDITOR
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    static void Init()
     {
-        None,
-        LifeBubbleSpawn,
-        OnGoing,
-        Paused,
-        Ended
+        Instance = null;
     }
+#endif
 
     public struct PlayerBubbleData
     {
@@ -28,7 +34,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private GameState currentGameState = GameState.None;
+    public GameState currentGameState { get; private set; } = GameState.LifeBubbleSpawn;
 
     private int maxNumOfPlayers = 4;
     private int minNumOfPlayers = 2;
@@ -65,32 +71,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         OnGameStateChanged.AddListener(HandleGameStateChanged);
-    }
-
-    void Update()
-    {
-        if(currentGameState == GameState.OnGoing && numOfPlayersAlive <= 1)
-        {
-            // Pitää ehkä tehä jotain muutakin kun peli loppuu
-            SwitchGameState(GameState.Ended);
-        }
-
-        // Ei vältsii tarvita tätä pätkää?
-        switch(currentGameState)
-        {
-            case GameState.None:
-                break;
-            case GameState.LifeBubbleSpawn:
-                break;
-            case GameState.OnGoing:
-                break;
-            case GameState.Paused:
-                break;
-            case GameState.Ended:
-                break;
-            default:
-                break;
-        }
+        SwitchGameState(currentGameState);
     }
 
     /// <summary>
@@ -108,8 +89,6 @@ public class GameManager : MonoBehaviour
     {
         switch (newState)
         {
-            case GameState.None:
-                break;
             case GameState.LifeBubbleSpawn:
                 break;
             case GameState.OnGoing:
@@ -154,7 +133,7 @@ public class GameManager : MonoBehaviour
     }
     
     /*
-    // Tätä pitää vähän pohtia, pitää mm kattoa miten me lisätään ne pelaajat johonkin listaan ennen ku ne spawnataan kentälle
+    // Tï¿½tï¿½ pitï¿½ï¿½ vï¿½hï¿½n pohtia, pitï¿½ï¿½ mm kattoa miten me lisï¿½tï¿½ï¿½n ne pelaajat johonkin listaan ennen ku ne spawnataan kentï¿½lle
     public void SpawnPlayers()
     {
         while(players.Count < currentNumOfPlayers)
@@ -178,7 +157,7 @@ public class GameManager : MonoBehaviour
         foreach(PlayerBubbleData data in bubbleDatas)
         {
             players.Add(data);
-            data.controller.OnPlayerDeath.AddListener(DoSomethingWhenPlayerDies);
+            data.controller.onPlayerDeath.AddListener(DoSomethingWhenPlayerDies); 
         }
 
         SwitchGameState(GameState.OnGoing);
@@ -188,5 +167,11 @@ public class GameManager : MonoBehaviour
     {
         // I'm doing something
         numOfPlayersAlive--;
+        
+        if(currentGameState == GameState.OnGoing && numOfPlayersAlive <= 1)
+        {
+            // Pitï¿½ï¿½ ehkï¿½ tehï¿½ jotain muutakin kun peli loppuu
+            SwitchGameState(GameState.Ended);
+        }
     }
 }
