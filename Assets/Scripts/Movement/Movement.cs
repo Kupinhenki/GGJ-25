@@ -411,7 +411,7 @@ public class Movement : MonoBehaviour
             _ghostVelocity = Vector2.Lerp(_ghostVelocity, targetVelocity, GhostData.runAccelAmount * Time.deltaTime);
         }
 
-        RB.velocity = _ghostVelocity;
+        RB.linearVelocity = _ghostVelocity;
     }
     #endregion
 
