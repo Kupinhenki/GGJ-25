@@ -20,5 +20,7 @@ public class LifeBubble : MonoBehaviour
         {
             manager.LoseLife(owner);
         }
+
+        Destroy(gameObject);
     }
 }
