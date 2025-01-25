@@ -429,6 +429,7 @@ public class Movement : MonoBehaviour
         if (value != null)
         {
             _moveInput = value.Get<Vector2>();
+            Debug.Log($"Move Input: {_moveInput}");
         }
         else
         {
