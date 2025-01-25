@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,24 +10,33 @@ public class GameManager : MonoBehaviour
     public enum GameState
     {
         None,
-        InMenu,
         LifeBubbleSpawn,
         OnGoing,
         Paused,
         Ended
     }
 
+    public struct PlayerBubbleData
+    {
+        public PlayerController controller;
+        public int[] bubbleSpawnIndexes;
+
+        public PlayerBubbleData(PlayerController _controller, int[] _array)
+        {
+            controller = _controller;
+            bubbleSpawnIndexes = _array;
+        }
+    }
+
     private GameState currentGameState = GameState.None;
 
     private int maxNumOfPlayers = 4;
     private int minNumOfPlayers = 2;
-
     private int maxNumOfBubbles = 3;
 
-    private int currentNumOfPlayers;
-    private int numOfPlayersAlive;
+    private int numOfPlayersAlive = 0;
 
-    private List<PlayerController> players = new List<PlayerController>();
+    private List<PlayerBubbleData> players = new List<PlayerBubbleData>();
 
     /// <summary>
     /// Add positions for the life bubble spawns.
@@ -34,7 +44,6 @@ public class GameManager : MonoBehaviour
     public Transform[] bubbleLocations;
 
     public GameObject lifeBubblePrefab;
-    public GameObject playerPrefab;
 
     public UnityEvent<GameState> OnGameStateChanged;
 
@@ -55,7 +64,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        
+        OnGameStateChanged.AddListener(HandleGameStateChanged);
     }
 
     void Update()
@@ -66,11 +75,10 @@ public class GameManager : MonoBehaviour
             SwitchGameState(GameState.Ended);
         }
 
+        // Ei v‰ltsii tarvita t‰t‰ p‰tk‰‰?
         switch(currentGameState)
         {
             case GameState.None:
-                break;
-            case GameState.InMenu:
                 break;
             case GameState.LifeBubbleSpawn:
                 break;
@@ -85,38 +93,67 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SwitchGameState(GameState state)
+    /// <summary>
+    /// Switches the current game state.
+    /// </summary>
+    /// <param name="newState"></param>
+    public void SwitchGameState(GameState newState)
     {
-        currentGameState = state;
+        currentGameState = newState;
         OnGameStateChanged.Invoke(currentGameState);
     }
 
-    /// <summary>
-    /// Spawns a life bubble at the specified spawn location.
-    /// </summary>
-    /// <param name="index"></param>
-    private GameObject SpawnLifeBubble(int index, int creatorIndex)
+
+    private void HandleGameStateChanged(GameState newState)
     {
-        GameObject instantiatedPrefab = Instantiate(lifeBubblePrefab, bubbleLocations[index].position, Quaternion.identity);
-        instantiatedPrefab.GetComponent<LifeBubble>().owner = players[creatorIndex];
-        return instantiatedPrefab;
+        switch (newState)
+        {
+            case GameState.None:
+                break;
+            case GameState.LifeBubbleSpawn:
+                break;
+            case GameState.OnGoing:
+                numOfPlayersAlive = players.Count;
+                SpawnLifeBubbles();
+                break;
+            case GameState.Paused:
+                // Show pause screen
+                break;
+            case GameState.Ended:
+                // Show end screen
+                break;
+            default:
+                break;
+        }
     }
 
     /// <summary>
     /// Spawns all the life bubbles based on the cached player choices.
     /// </summary>
     /// <param name="playerStruct"></param>
-    public void SpawnLifeBubbles(int[][] playerStruct)
+    public void SpawnLifeBubbles()
     {
-        for(int i = 0; i < currentNumOfPlayers; i++)
+        for(int i = 0; i < players.Count; i++)
         {
             for(int j = 0; j < 3; j++)
             {
-                SpawnLifeBubble(playerStruct[i][j], i);
+                SpawnLifeBubble(players[i].bubbleSpawnIndexes[j], players[i].controller);
             }
         }
     }
-
+    
+    /// <summary>
+    /// Spawns a life bubble at the specified spawn location.
+    /// </summary>
+    /// <param name="index"></param>
+    private GameObject SpawnLifeBubble(int index, PlayerController creator)
+    {
+        GameObject instantiatedPrefab = Instantiate(lifeBubblePrefab, bubbleLocations[index].position, Quaternion.identity);
+        instantiatedPrefab.GetComponent<LifeBubble>().owner = creator;
+        return instantiatedPrefab;
+    }
+    
+    /*
     // T‰t‰ pit‰‰ v‰h‰n pohtia, pit‰‰ mm kattoa miten me lis‰t‰‰n ne pelaajat johonkin listaan ennen ku ne spawnataan kent‰lle
     public void SpawnPlayers()
     {
@@ -129,14 +166,27 @@ public class GameManager : MonoBehaviour
 
         numOfPlayersAlive = currentNumOfPlayers;
     }
+    */
 
     public void LoseLife(PlayerController player)
     {
         player.numOfLives--;
     }
 
+    public void AddPlayers(PlayerBubbleData[] bubbleDatas)
+    {
+        foreach(PlayerBubbleData data in bubbleDatas)
+        {
+            players.Add(data);
+            data.controller.OnPlayerDeath.AddListener(DoSomethingWhenPlayerDies);
+        }
+
+        SwitchGameState(GameState.OnGoing);
+    }
+
     private void DoSomethingWhenPlayerDies()
     {
         // I'm doing something
+        numOfPlayersAlive--;
     }
 }
