@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,7 @@ public class Movement : MonoBehaviour
     //Next, drag it into the slot in playerMovement on your player
 
     public MovementData Data;
+    public MovementData GhostData;
 
     #region Variables
     //Components
@@ -53,6 +55,9 @@ public class Movement : MonoBehaviour
     [SerializeField] private Transform _backWallCheckPoint;
     [SerializeField] private Vector2 _wallCheckSize = new Vector2(0.5f, 1f);
 
+    [SerializeField] private bool _isGhostMode = false;
+    [SerializeField] private Vector2 _ghostVelocity;
+
     [Header("Layers & Tags")]
     [SerializeField] private LayerMask _groundLayer;
     #endregion
@@ -67,12 +72,27 @@ public class Movement : MonoBehaviour
 
     private void Start()
     {
-        SetGravityScale(Data.gravityScale);
+        if (_isGhostMode)
+        {
+            gameObject.layer = LayerMask.NameToLayer("Ghost");
+            SetGravityScale(0);
+        }
+        else 
+        {
+            SetGravityScale(Data.gravityScale);
+        }
+        
         IsFacingRight = true;
     }
 
     private void Update()
     {
+        if (_isGhostMode)
+        {
+            HandleGhostModeMovement();
+            return;
+        }
+
         #region TIMERS
         LastOnGroundTime -= Time.deltaTime;
         LastOnWallTime -= Time.deltaTime;
@@ -217,6 +237,7 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (_isGhostMode) return;
         //Handle Run
         if (IsWallJumping)
             Run(Data.wallJumpRunLerp);
@@ -374,6 +395,25 @@ public class Movement : MonoBehaviour
     }
     #endregion
 
+    #region GHOST MODE METHODS
+    private void HandleGhostModeMovement()
+    {
+        Vector2 targetVelocity = _moveInput * GhostData.runMaxSpeed;
+
+        if (_moveInput == Vector2.zero)
+        {
+            // Decelerate smoothly when there's no input
+            _ghostVelocity = Vector2.Lerp(_ghostVelocity, Vector2.zero, GhostData.runDeccelAmount * Time.deltaTime);
+        }
+        else
+        {
+            // Accelerate towards target velocity
+            _ghostVelocity = Vector2.Lerp(_ghostVelocity, targetVelocity, GhostData.runAccelAmount * Time.deltaTime);
+        }
+
+        RB.linearVelocity = _ghostVelocity;
+    }
+    #endregion
 
     #region CHECK METHODS
     public void CheckDirectionToFace(bool isMovingRight)
@@ -426,11 +466,12 @@ public class Movement : MonoBehaviour
 
     private void OnMove(InputValue value)
     {
-        _moveInput = value.Get<Vector2>();
+        _moveInput = value != null ? value.Get<Vector2>() : Vector2.zero;
     }
 
     private void OnJump(InputValue value)
     {
+        if (_isGhostMode) return; // No jumping in ghost mode
         if (value.isPressed)
         {
             OnJumpInput();
