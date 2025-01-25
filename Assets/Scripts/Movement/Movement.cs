@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(PlayerInput))]
 public class Movement : MonoBehaviour
 {
     //Scriptable object which holds all the player's movement parameters. If you don't want to use it
@@ -55,24 +54,21 @@ public class Movement : MonoBehaviour
     [SerializeField] private Transform _backWallCheckPoint;
     [SerializeField] private Vector2 _wallCheckSize = new Vector2(0.5f, 1f);
 
-    [SerializeField] private bool _isGhostMode = false;
+    public bool isGhostMode = false;
     [SerializeField] private Vector2 _ghostVelocity;
 
     [Header("Layers & Tags")]
     [SerializeField] private LayerMask _groundLayer;
     #endregion
 
-    PlayerInput playerInput;
-
     private void Awake()
     {
         RB = GetComponent<Rigidbody2D>();
-        playerInput = GetComponent<PlayerInput>();
     }
 
     private void Start()
     {
-        if (_isGhostMode)
+        if (isGhostMode)
         {
             gameObject.layer = LayerMask.NameToLayer("Ghost");
             SetGravityScale(0);
@@ -87,7 +83,7 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-        if (_isGhostMode)
+        if (isGhostMode)
         {
             HandleGhostModeMovement();
             return;
@@ -237,7 +233,7 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_isGhostMode) return;
+        if (isGhostMode) return;
         //Handle Run
         if (IsWallJumping)
             Run(Data.wallJumpRunLerp);
@@ -464,14 +460,14 @@ public class Movement : MonoBehaviour
     }
     #endregion
 
-    private void OnMove(InputValue value)
+    public void SetMove(InputValue value)
     {
         _moveInput = value != null ? value.Get<Vector2>() : Vector2.zero;
     }
 
-    private void OnJump(InputValue value)
+    public void SetJump(InputValue value)
     {
-        if (_isGhostMode) return; // No jumping in ghost mode
+        if (isGhostMode) return; // No jumping in ghost mode
         if (value.isPressed)
         {
             OnJumpInput();
