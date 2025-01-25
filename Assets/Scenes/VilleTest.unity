@@ -528,11 +528,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Data: {fileID: 11400000, guid: 32f7fa1d0d5c0d64497f4bee868b17d8, type: 2}
+  GhostData: {fileID: 11400000, guid: 3de38c34d9c1c75458669087138bf241, type: 2}
   _groundCheckPoint: {fileID: 1875029443}
   _groundCheckSize: {x: 0.49, y: 0.03}
   _frontWallCheckPoint: {fileID: 1365300319}
   _backWallCheckPoint: {fileID: 736662604}
   _wallCheckSize: {x: 0.5, y: 1}
+  _isGhostMode: 0
+  _ghostVelocity: {x: 0, y: 0}
   _groundLayer:
     serializedVersion: 2
     m_Bits: 64
