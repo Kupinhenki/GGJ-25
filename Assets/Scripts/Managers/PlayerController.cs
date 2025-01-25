@@ -14,10 +14,14 @@ public class PlayerController : MonoBehaviour
         Ghost
     }
 
+    public GameObject playerVisualization;
+    public GameObject ghostVisualization;
+
     public PlayerState currentPlayerState = PlayerState.None;
     public int numOfLives = 3;
 
     public UnityEvent OnPlayerDeath;
+    public UnityEvent<PlayerState> OnPlayerStateChanged;
 
     private GameManager manager;
 
@@ -25,6 +29,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         OnPlayerDeath.AddListener(HandleDeathEvent);
+        OnPlayerStateChanged.AddListener(HandlePlayerStateChange);
 
         manager = GameManager.Instance;
         manager.OnGameStateChanged.AddListener(HandleGameStateChange);
@@ -35,7 +40,7 @@ public class PlayerController : MonoBehaviour
         if (numOfLives <= 0 && currentPlayerState != PlayerState.Ghost)
         {
             currentPlayerState = PlayerState.Ghost;
-            OnPlayerDeath.Invoke();
+            HandlePlayerStateChange(currentPlayerState);
         }
 
         switch (currentPlayerState)
@@ -47,6 +52,8 @@ public class PlayerController : MonoBehaviour
             case PlayerState.Playing:
                 break;
             case PlayerState.Ghost:
+                break;
+            default:
                 break;
         }
     }
@@ -63,9 +70,9 @@ public class PlayerController : MonoBehaviour
         {
             case GameState.None:
                 break;
-            case GameState.InMenu:
-                break;
             case GameState.LifeBubbleSpawn:
+                playerVisualization.SetActive(false);
+                ghostVisualization.SetActive(false);
                 break;
             case GameState.OnGoing:
                 currentPlayerState = PlayerState.Playing;
@@ -74,6 +81,30 @@ public class PlayerController : MonoBehaviour
                 break;
             case GameState.Ended:
                 currentPlayerState = PlayerState.None;
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void HandlePlayerStateChange(PlayerState playerState)
+    {
+        switch(playerState)
+        {
+            case PlayerState.None:
+                break;
+            case PlayerState.ChoosingBubbleSpawns:
+                // Tähän valinta controlleri päälle
+                break;
+            case PlayerState.Playing:
+                // Tähän perus movement controlleri päälle
+                playerVisualization.SetActive(true);
+                break;
+            case PlayerState.Ghost:
+                // Tähän ghost controlleri päälle
+                playerVisualization.SetActive(false);
+                ghostVisualization.SetActive(true);
+                OnPlayerDeath.Invoke();
                 break;
             default:
                 break;
