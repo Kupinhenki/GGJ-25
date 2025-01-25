@@ -426,7 +426,14 @@ public class Movement : MonoBehaviour
 
     private void OnMove(InputValue value)
     {
-        _moveInput = value.Get<Vector2>();
+        if (value != null)
+        {
+            _moveInput = value.Get<Vector2>();
+        }
+        else
+        {
+            _moveInput = Vector2.zero; // Prevent null reference issues.
+        }
     }
 
     private void OnJump(InputValue value)
