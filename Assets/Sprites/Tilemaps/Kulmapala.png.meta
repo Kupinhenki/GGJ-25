@@ -1,15 +1,15 @@
 fileFormatVersion: 2
-guid: 52377926f8d8b42ddac6851375dd1c78
+guid: 3ea4d96e5c1f445c293a1def9c85e343
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2121568480857067163
-    second: sloperigt_0
+      213: -2303069928007128998
+    second: Kulmapala_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -51,12 +51,12 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 256
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 0
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sloperigt_0
+      name: Kulmapala_0
       rect:
         serializedVersion: 2
         x: 0
@@ -108,25 +108,30 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 56179db05bcae82e0800000000000000
-      internalID: -2121568480857067163
+      spriteID: a5820484a1ad900e0800000000000000
+      internalID: -2303069928007128998
       vertices: []
       indices: 
       edges: []
       weights: []
     outline: []
     customData: 
-    physicsShape: []
+    physicsShape:
+    - - {x: -128, y: -128}
+      - {x: 128, y: -128}
+      - {x: 128, y: 128}
+      - {x: -36, y: 128}
+      - {x: -128, y: 33}
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
@@ -135,7 +140,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      sloperigt_0: -2121568480857067163
+      Kulmapala_0: -2303069928007128998
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

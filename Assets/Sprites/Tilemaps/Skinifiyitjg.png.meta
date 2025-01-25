@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 31df40985f2d74772949524f9f128aa0
+guid: f966e6646175d4a1ebd99aca36a42e8b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3241134849792281093
-    second: Kulmasuoraoikea_0
+      213: -387860406575153326
+    second: Skinifiyitjg_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -56,7 +56,7 @@ TextureImporter:
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 0
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Kulmasuoraoikea_0
+      name: Skinifiyitjg_0
       rect:
         serializedVersion: 2
         x: 0
@@ -108,25 +108,31 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 50a020f39f2dafc20800000000000000
-      internalID: 3241134849792281093
+      spriteID: 25f36a3e30b0e9af0800000000000000
+      internalID: -387860406575153326
       vertices: []
       indices: 
       edges: []
       weights: []
     outline: []
     customData: 
-    physicsShape: []
+    physicsShape:
+    - - {x: -128, y: -30}
+      - {x: -30, y: -128}
+      - {x: 128, y: -128}
+      - {x: 128, y: 29}
+      - {x: 33, y: 128}
+      - {x: -128, y: 128}
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
@@ -135,7 +141,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Kulmasuoraoikea_0: 3241134849792281093
+      Skinifiyitjg_0: -387860406575153326
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

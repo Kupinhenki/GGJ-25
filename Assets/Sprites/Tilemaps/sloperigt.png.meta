@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3e5c48af049ca4fe28cc5317ee3d7a7f
+guid: 52377926f8d8b42ddac6851375dd1c78
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1784034306550552575
-    second: Kulmasuoravasen_0
+      213: -2121568480857067163
+    second: sloperigt_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -56,7 +56,7 @@ TextureImporter:
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 0
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Kulmasuoravasen_0
+      name: sloperigt_0
       rect:
         serializedVersion: 2
         x: 0
@@ -108,25 +108,31 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ff75e05efb922c810800000000000000
-      internalID: 1784034306550552575
+      spriteID: 56179db05bcae82e0800000000000000
+      internalID: -2121568480857067163
       vertices: []
       indices: 
       edges: []
       weights: []
     outline: []
     customData: 
-    physicsShape: []
+    physicsShape:
+    - - {x: -128, y: 128}
+      - {x: -128, y: -128}
+      - {x: 128, y: -128}
+      - {x: 128, y: 32}
+      - {x: 36, y: 128}
+      - {x: -128, y: 128}
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
@@ -135,7 +141,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Kulmasuoravasen_0: 1784034306550552575
+      sloperigt_0: -2121568480857067163
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

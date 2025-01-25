@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3ea4d96e5c1f445c293a1def9c85e343
+guid: 31df40985f2d74772949524f9f128aa0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2303069928007128998
-    second: Kulmapala_0
+      213: 3241134849792281093
+    second: Kulmasuoraoikea_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -56,7 +56,7 @@ TextureImporter:
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 0
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Kulmapala_0
+      name: Kulmasuoraoikea_0
       rect:
         serializedVersion: 2
         x: 0
@@ -108,25 +108,29 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a5820484a1ad900e0800000000000000
-      internalID: -2303069928007128998
+      spriteID: 50a020f39f2dafc20800000000000000
+      internalID: 3241134849792281093
       vertices: []
       indices: 
       edges: []
       weights: []
     outline: []
     customData: 
-    physicsShape: []
+    physicsShape:
+    - - {x: -128, y: -128}
+      - {x: 128, y: -128}
+      - {x: 128, y: 33}
+      - {x: -128, y: 33}
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
@@ -135,7 +139,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Kulmapala_0: -2303069928007128998
+      Kulmasuoraoikea_0: 3241134849792281093
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

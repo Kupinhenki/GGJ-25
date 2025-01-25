@@ -1,15 +1,15 @@
 fileFormatVersion: 2
-guid: 976422df608724b27bb4c6adb711086a
+guid: 3e5c48af049ca4fe28cc5317ee3d7a7f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8048551299555209389
-    second: Skibidit_0
+      213: 1784034306550552575
+    second: Kulmasuoravasen_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -51,12 +51,12 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 256
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 0
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Skibidit_0
+      name: Kulmasuoravasen_0
       rect:
         serializedVersion: 2
         x: 0
@@ -108,25 +108,29 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: da03f7e83c232bf60800000000000000
-      internalID: 8048551299555209389
+      spriteID: ff75e05efb922c810800000000000000
+      internalID: 1784034306550552575
       vertices: []
       indices: 
       edges: []
       weights: []
     outline: []
     customData: 
-    physicsShape: []
+    physicsShape:
+    - - {x: -128, y: -128}
+      - {x: 128, y: -128}
+      - {x: 128, y: 33}
+      - {x: -128, y: 33}
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
@@ -135,7 +139,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Skibidit_0: 8048551299555209389
+      Kulmasuoravasen_0: 1784034306550552575
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
