@@ -179,5 +179,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d69844a57641f73488317024a3c4f259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PushStrength: 100
-  SuckStrength: 50
+  PushStrength: 50
+  SuckStrength: 25

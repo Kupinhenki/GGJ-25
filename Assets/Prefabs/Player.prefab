@@ -151,7 +151,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9053151262446897490}
   - component: {fileID: 1438153145562109991}
-  - component: {fileID: 7681798597304197959}
   - component: {fileID: 7917329692594748115}
   - component: {fileID: 7724712500207141933}
   - component: {fileID: 1971275774309684421}
@@ -237,36 +236,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7681798597304197959
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6352441696529978893}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!114 &7917329692594748115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,7 +255,7 @@ MonoBehaviour:
   _frontWallCheckPoint: {fileID: 968070709305833439}
   _backWallCheckPoint: {fileID: 4686824425337522420}
   _wallCheckSize: {x: 0.5, y: 1}
-  _isGhostMode: 0
+  isGhostMode: 0
   _ghostVelocity: {x: 0, y: 0}
   _groundLayer:
     serializedVersion: 2
