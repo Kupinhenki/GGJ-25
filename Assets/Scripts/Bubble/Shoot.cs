@@ -14,6 +14,7 @@ public class Shoot : MonoBehaviour
             Vector2 direction = movement.IsFacingRight ? Vector2.right : Vector2.left;
             Bubble bubbleScript = bubble.GetComponent<Bubble>();
             bubbleScript.ShootBubble(direction);
+            AudioManager.Instance.PlaySoundFromAnimationEvent("Shoot");
         }
     }
 }
