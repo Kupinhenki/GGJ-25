@@ -2,44 +2,18 @@ using UnityEngine;
 
 public class Shoot : MonoBehaviour
 {
-    public GameObject bubblePrefab;
-    public Transform bubbleSpawnPoint;
-    public float shootCooldown = 1f;
-    private bool right = false;
-    private bool canShoot = true;
-
-    void Update()
+    [SerializeField] public GameObject bubblePrefab;
+    [SerializeField] public Transform bubbleSpawnPoint;
+    [SerializeField] private Movement movement;
+    [SerializeField] private GameObject bubble;
+    public void ShootBubble()
     {
-        if (canShoot)
+        if (!movement.isGhostMode && bubble == null && movement.isActiveAndEnabled)
         {
-            ShootBubble();
+            bubble = Instantiate(bubblePrefab, new Vector2(bubbleSpawnPoint.position.x, bubbleSpawnPoint.position.y), bubbleSpawnPoint.rotation);
+            Vector2 direction = movement.IsFacingRight ? Vector2.right : Vector2.left;
+            Bubble bubbleScript = bubble.GetComponent<Bubble>();
+            bubbleScript.ShootBubble(direction);
         }
-    }
-
-    void ShootBubble()
-    {
-        canShoot = false;
-        GameObject bubble = Instantiate(bubblePrefab, bubbleSpawnPoint.position, bubbleSpawnPoint.rotation);
-
-        Vector2 direction;
-        if (right)
-        {
-            direction = Vector2.right;
-        }
-        else
-        {
-            direction = Vector2.left;
-        }
-        right = !right;
-
-        Bubble bubbleScript = bubble.GetComponent<Bubble>();
-        bubbleScript.ShootBubble(direction);
-
-        Invoke(nameof(ResetShoot), shootCooldown);
-    }
-
-    void ResetShoot()
-    {
-        canShoot = true;
     }
 }
