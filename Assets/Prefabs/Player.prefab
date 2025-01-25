@@ -76,7 +76,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 693305753
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 3682887421031680377, guid: cb05d6d9366344e038efc4db73f10308, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -382,9 +382,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f98bf8455380a34aae1af6f9b3aa336, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bubblePrefab: {fileID: 0}
-  bubbleSpawnPoint: {fileID: 0}
-  movement: {fileID: 0}
+  bubblePrefab: {fileID: 4379427205740443414, guid: c99818bfddebe0944a51b7ccefb97f1e, type: 3}
+  bubbleSpawnPoint: {fileID: 3937417576217755878}
+  movement: {fileID: 7917329692594748115}
   bubble: {fileID: 0}
 --- !u!1 &8009557241483028120
 GameObject:
