@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1872425927513646519}
   - component: {fileID: 3361330994935786028}
+  - component: {fileID: 6245316539247571623}
   m_Layer: 0
   m_Name: LavaPool
   m_TagString: Untagged
@@ -64,7 +65,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -80,6 +81,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 3, y: 0.4}
   m_EdgeRadius: 0
+--- !u!114 &6245316539247571623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632862507642950082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f48546f65d8819d4ab9f4574a7a20047, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamageAmount: 1
 --- !u!1 &7901431912570557803
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,7 +248,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 2.5}
+  m_Offset: {x: 0, y: 4.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -244,7 +258,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3, y: 5}
+  m_Size: {x: 3, y: 9}
   m_EdgeRadius: 0
 --- !u!114 &4831641162422912234
 MonoBehaviour:
@@ -258,4 +272,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d69844a57641f73488317024a3c4f259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PushStrength: 10
+  PushStrength: 50
+  SuckStrength: 25

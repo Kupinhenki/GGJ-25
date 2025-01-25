@@ -3,56 +3,26 @@ using UnityEngine;
 
 public class PushingForceScript : MonoBehaviour
 {
-    private List<GameObject> AffectedObjects;
     [SerializeField] private float PushStrength;
+    [SerializeField] private float SuckStrength;
 
-    // Itsellä huono tunne että OnTriggerStay2D ei ole tarpeeksi hyvä, mutten pysty nyt testaamaan.
-    // Niin jätän tänne väliaikaisesti koodit joilla saatan saada toimimaan myöhemmin.
-    // Poistan turhat myöhemmin, ei huolta.
-
-    /*
-    void FixedUpdate()
+    private float DistanceAlongAxis(Transform a, Transform b, Vector3 DifferenceDirection)
     {
-        if (AffectedObjects.Count > 0)
-        {
-            foreach (GameObject obj in AffectedObjects)
-            {
-                float PushStrengthMultiplier = 1 - (DistanceAlongAxis(obj.transform, transform) / GetComponent<BoxCollider2D>().size.y);
-                // obj.PhysicsPush(transform.up * PushStrength * PushStrengthMultiplier);
-            }
-        }
+        return Vector3.Dot(DifferenceDirection, a.position - b.position);
     }
-    */
-
-    private float DistanceAlongAxis(Transform a, Transform b)
-    {
-        Vector3 differenceDirection = b.up;
-
-        return Vector3.Dot(differenceDirection, a.position - b.position);
-    }
-
-    /*
-    private void OnTriggerEnter2D(Collider2D Other)
-    {
-        if (Other.CompareTag("Bubble"))
-        {
-            AffectedObjects.Add(Other.gameObject);
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D Other)
-    {
-        if (Other.CompareTag("Bubble"))
-        {
-            AffectedObjects.Remove(Other.gameObject);
-        }
-    }
-    */
 
     private void OnTriggerStay2D(Collider2D Other)
     {
-        float PushStrengthMultiplier = 1 - (DistanceAlongAxis(Other.transform, transform) / GetComponent<BoxCollider2D>().size.y);
-        PushStrengthMultiplier = PushStrengthMultiplier > 0 ? PushStrengthMultiplier : 0;
-        // Other.PhysicsPush(transform.up * PushStrength * PushStrengthMultiplier);
+        if (Other.gameObject.CompareTag("Bubble"))
+        {
+            float PushStrengthMultiplier = 1 - (DistanceAlongAxis(Other.transform, transform, transform.up) / GetComponent<BoxCollider2D>().size.y);
+            PushStrengthMultiplier = PushStrengthMultiplier > 0 ? PushStrengthMultiplier : 0;
+
+            float SuckStrengthMultiplier = (DistanceAlongAxis(Other.transform, transform, transform.right) / GetComponent<BoxCollider2D>().size.x) * -1;
+
+            Vector3 OutwardsPush = transform.up * PushStrength * PushStrengthMultiplier;
+            Vector3 InwardsSuction = transform.right * SuckStrength * SuckStrengthMultiplier;
+            Other.transform.GetComponent<Rigidbody2D>().AddForce(OutwardsPush + InwardsSuction);
+        }
     }
 }
