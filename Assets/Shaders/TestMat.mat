@@ -40,8 +40,8 @@ Material:
     - _NoiseIntensity: 2.02
     - _NoisePower: 2.39
     - _NoiseSpeed: 1.42
-    - _VignetteIntensity: 1.58
-    - _VignettePower: 2.31
+    - _VignetteIntensity: 0
+    - _VignettePower: 1
     m_Colors:
     - _VignetteColor: {r: 0, g: 0.00088596344, b: 1, a: 0}
   m_BuildTextureStacks: []

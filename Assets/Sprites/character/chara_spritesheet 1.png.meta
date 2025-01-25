@@ -347,7 +347,16 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      chara_spritesheet 1_0: 6110674471105875932
+      chara_spritesheet 1_1: -8511384068618140272
+      chara_spritesheet 1_2: -6918272651986722674
+      chara_spritesheet 1_3: 8744051209654649051
+      chara_spritesheet 1_4: 5966117731480203228
+      chara_spritesheet 1_5: 727601924856149128
+      chara_spritesheet 1_6: -17576211571462437
+      chara_spritesheet 1_7: -2306741155934098604
+      chara_spritesheet 1_8: -6737782086557494005
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
