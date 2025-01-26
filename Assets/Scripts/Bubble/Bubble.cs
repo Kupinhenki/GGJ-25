@@ -5,12 +5,12 @@ using static UnityEngine.Analytics.IAnalytic;
 
 public class Bubble : MonoBehaviour
 {
-    [SerializeField] private float initialForce = 25f;
-    [SerializeField] private float decelerationForce = 12f;
+    [SerializeField] private float initialForce = 30f;
+    [SerializeField] private float decelerationForce = 35f;
     [SerializeField] private float lifetime = 5f;
-    [SerializeField] private float oscillationScale = 0.005f;
+    [SerializeField] private float oscillationScale = 0.001f;
     [SerializeField] private float oscillationSpeed = 10;
-    [SerializeField] private float bounceForce = 10f;
+    [SerializeField] private float bounceForce = 40f;
     
     private float timer;
     private float maxScale = 1f;
@@ -23,13 +23,13 @@ public class Bubble : MonoBehaviour
         timer = 0;
         rb = GetComponent<Rigidbody2D>();
         Destroy(gameObject, lifetime);
-        StartCoroutine(GrowBubble());
+        //StartCoroutine(GrowBubble());
     }
 
     private void LateUpdate()
     {
-        timer += Time.deltaTime;
-        rb.transform.Translate(new Vector2(0, 1f * Oscillate(timer, 10, oscillationScale)));
+        //timer += Time.deltaTime;
+        //rb.transform.Translate(new Vector2(0, 1f * Oscillate(timer, 10, oscillationScale)));
         if (trappedPlayer != null)
         {
             trappedPlayer.transform.position = this.transform.position;
@@ -110,14 +110,15 @@ public class Bubble : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
+            AudioManager.Instance.PlaySoundFromAnimationEvent("BubbleBounce");
             if (collision.gameObject.TryGetComponent<Movement>(out var movement))
             {
                 float tempForce = bounceForce;
                 if (movement.RB.linearVelocity.y < 0)
                     tempForce -= movement.RB.linearVelocity.y;
-                movement.RB.linearVelocityY = 0f;
+                movement.RB.gravityScale = 10;
                 movement.RB.AddForce(Vector2.up * tempForce, ForceMode2D.Impulse);
-                Debug.Log(Vector2.up * tempForce);
+                movement.bouncing = true;
             }
             Destroy(this.gameObject);
         }
@@ -136,8 +137,10 @@ public class Bubble : MonoBehaviour
             movement.RB.gravityScale = 0;
             movement.RB.linearVelocity = Vector2.zero;
         }
-
+        PlayerController playerController = trappedPlayer.GetComponentInParent<PlayerController>();
+        playerController.playerInBubble = true;
         trappedPlayer.transform.position = this.transform.position;
+       // this.gameObject.transform.localScale =  
     }
 
     // Enable controls for trapped player
@@ -155,6 +158,8 @@ public class Bubble : MonoBehaviour
                 movement.RB.gravityScale = 1;
                 movement.RB.linearVelocity = Vector2.zero;
             }
+            PlayerController playerController = trappedPlayer.GetComponentInParent<PlayerController>();
+            playerController.playerInBubble = false;
             trappedPlayer = null;
         }
 

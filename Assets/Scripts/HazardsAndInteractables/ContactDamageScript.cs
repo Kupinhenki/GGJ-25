@@ -2,19 +2,23 @@ using UnityEngine;
 
 public class ContactDamageScript : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D Other)
+    [SerializeField] private int DamageAmount = 1;
+
+    private void OnCollisionEnter2D(Collision2D Other)
     {
         if (Other.gameObject.CompareTag("Player"))
         {
-            // Pelaaja menee takaisin tason alkuun?
+            // Other.TakeDamage(DamageAmount);
+            Other.gameObject.GetComponent<Movement>().Respawn();
         }
     }
 
-    private void OnTriggerStay2D(Collider2D Other)
+    private void OnCollisionStay2D(Collision2D Other)
     {
         if (Other.gameObject.CompareTag("Player"))
         {
-            // Jotain tämmöstä
+            // Other.TakeDamage(DamageAmount);
+            Other.gameObject.GetComponent<Movement>().Respawn();
         }
     }
 }

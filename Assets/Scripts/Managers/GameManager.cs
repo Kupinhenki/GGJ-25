@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem.XR;
 
 public enum GameState
 {
@@ -54,6 +55,8 @@ public class GameManager : MonoBehaviour
     public UnityEvent<GameState> OnGameStateChanged;
 
     public GameObject endScreenCanvas;
+
+    public Transform[] playerSpawnLocations;
 
     /// <summary>
     /// Singleton initialization
@@ -158,6 +161,7 @@ public class GameManager : MonoBehaviour
     public void LoseLife(PlayerController player)
     {
         player.numOfLives--;
+        StartCoroutine(player.BubblePopped(player.playerId));   
     }
 
     public void AddPlayers(PlayerBubbleData[] bubbleDatas)
@@ -167,7 +171,10 @@ public class GameManager : MonoBehaviour
             PlayerBubbleData data = bubbleDatas[i];
             players.Add(data);
             data.controller.playerId = i;
-            data.controller.onPlayerDeath.AddListener(DoSomethingWhenPlayerDies); 
+            data.controller.onPlayerDeath.AddListener(DoSomethingWhenPlayerDies);
+            data.controller.transform.position = playerSpawnLocations[i].position;
+            data.controller.movement.GetComponent<Rigidbody2D>().position = playerSpawnLocations[i].position;
+            data.controller.movement.spawnLocation = playerSpawnLocations[i];
         }
 
         SwitchGameState(GameState.OnGoing);
@@ -177,7 +184,8 @@ public class GameManager : MonoBehaviour
     {
         // I'm doing something
         numOfPlayersAlive--;
-        
+        AudioManager.Instance.PlaySoundFromAnimationEvent("Death");
+
         if(currentGameState == GameState.OnGoing && numOfPlayersAlive <= 1)
         {
             // Pit�� ehk� teh� jotain muutakin kun peli loppuu

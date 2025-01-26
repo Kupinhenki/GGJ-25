@@ -32,7 +32,7 @@ public class Movement : MonoBehaviour
     public float LastOnWallTime { get; private set; }
     public float LastOnWallRightTime { get; private set; }
     public float LastOnWallLeftTime { get; private set; }
-
+    public bool bouncing { get; set; }
     //Jump
     private bool _isJumpCut;
     private bool _isJumpFalling;
@@ -61,6 +61,8 @@ public class Movement : MonoBehaviour
     [SerializeField] private LayerMask _groundLayer;
 
     private float ghostCooldown = 7;
+
+    public Transform spawnLocation;
     #endregion
 
     private void Awake()
@@ -137,6 +139,7 @@ public class Movement : MonoBehaviour
             if (Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _groundLayer) && !IsJumping) //checks if set box overlaps with ground
             {
                 LastOnGroundTime = Data.coyoteTime; //if so sets the lastGrounded to coyoteTime
+                bouncing = false;
             }
 
             //Right Wall Check
@@ -275,6 +278,10 @@ public class Movement : MonoBehaviour
     #region GENERAL METHODS
     public void SetGravityScale(float scale)
     {
+        if (bouncing)
+        {
+            return;
+        }
         RB.gravityScale = scale;
     }
     #endregion
@@ -472,6 +479,12 @@ public class Movement : MonoBehaviour
         Gizmos.DrawWireCube(_backWallCheckPoint.position, _wallCheckSize);
     }
     #endregion
+
+    public void Respawn()
+    {
+        GetComponent<Rigidbody2D>().position = spawnLocation.position;
+        transform.position = spawnLocation.position;
+    }
 
     public void SetMove(InputValue value)
     {

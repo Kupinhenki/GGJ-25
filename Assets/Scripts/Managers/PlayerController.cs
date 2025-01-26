@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -6,14 +7,25 @@ using UnityEngine.Rendering.Universal;
 [RequireComponent(typeof(PlayerInput))]
 public class PlayerController : MonoBehaviour
 {
+    static readonly int _OFFSET = Shader.PropertyToID("_Offset");
     [SerializeField] LifeSpawnSelector _lifeSpawnSelector;
     [SerializeField] Camera _camera;
+    [SerializeField] Transform _background;
+    [SerializeField] SpriteRenderer _playerSprite;
+    [SerializeField] float[] _playerSpriteHueOffsets = new float[4] {
+        0,
+        0.5f,
+        0.86f,
+        0.59f
+    };
     public LifeSpawnSelector lifeSpawnSelector => _lifeSpawnSelector;
     
     public Movement movement;
     private Shoot shoot;
     public int playerId;
-    
+    public bool playerInBubble;
+    public Animator animator;
+
     int _numOfLives = LifeSpawnSelector.MAX_LIVES;
     public int numOfLives
     {
@@ -44,17 +56,43 @@ public class PlayerController : MonoBehaviour
     
     PlayerInput _playerInput;
     public PlayerInput playerInput => _playerInput;
+    
+    GameManager _gameManager = null;
 
     void Awake()
     {
         _playerInput = GetComponent<PlayerInput>();
         shoot = movement.GetComponent<Shoot>();
+        playerInBubble = false;
+
+        _gameManager = GameManager.Instance;
+
+        if (_gameManager != null)
+        {
+            GameManager.Instance.OnGameStateChanged.AddListener(HandleGameStateChange);
+        }
     }
     
     void Start()
     {
         onPlayerDeath.AddListener(HandleDeathEvent);
-        GameManager.Instance?.OnGameStateChanged.AddListener(HandleGameStateChange);
+        if (_gameManager == null)
+        {
+            _gameManager = GameManager.Instance;
+            GameManager.Instance.OnGameStateChanged.AddListener(HandleGameStateChange);
+        }
+    }
+
+    private void Update()
+    {
+        if (playerInBubble)
+        {
+            animator.SetBool("InBubble", true);
+        }
+        else
+        {
+            animator.SetBool("InBubble", false);
+        }
     }
 
     /// <summary>
@@ -70,11 +108,19 @@ public class PlayerController : MonoBehaviour
             case GameState.LifeBubbleSpawn:
                 _camera.gameObject.SetActive(false);
                 movement.gameObject.SetActive(false);
+                _background.gameObject.SetActive(false);
                 break;
             case GameState.OnGoing:
-                _camera.GetComponent<UniversalAdditionalCameraData>().volumeLayerMask |= (1 << LayerMask.NameToLayer("P" + (playerId + 1)));              
+                int playerLayer = LayerMask.NameToLayer("P" + (playerId + 1));
+                _camera.GetComponent<UniversalAdditionalCameraData>().volumeLayerMask |= 1 << playerLayer;
+                ChangeLayerRecursive(_background, playerLayer);
                 movement.gameObject.SetActive(true);
                 _camera.gameObject.SetActive(true);
+                _background.gameObject.SetActive(true);
+                _camera.cullingMask |= 1 << playerLayer;
+                
+                float playerSpriteHueOffset = playerId < _playerSpriteHueOffsets.Length ? _playerSpriteHueOffsets[playerId] : 0;
+                _playerSprite.material.SetFloat(_OFFSET, playerSpriteHueOffset);
                 break;
             case GameState.Ended:
                 movement.gameObject.SetActive(false);
@@ -82,15 +128,32 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void ChangeLayerRecursive(Transform parent, int layer)
+    {
+        parent.gameObject.layer = layer;
+        foreach (Transform t in parent)
+        {
+            ChangeLayerRecursive(t, layer);
+        }
+    }
+
     private void HandleDeathEvent()
     {
         FindFirstObjectByType<VisualEffectController>().ActivateDeadState(playerId);
         //Change sprite to dead sprite
+        animator.SetTrigger("Dead");
         Debug.Log("Player " + playerId + " is dead");
     }
-    
+
+    public IEnumerator BubblePopped(int playerId)
+    {
+        _camera.GetComponent<UniversalAdditionalCameraData>().SetRenderer(2);
+        yield return new WaitForSeconds(2f);
+        _camera.GetComponent<UniversalAdditionalCameraData>().SetRenderer(0);
+    }
+
     // Life Spawn
-    
+
     void OnSelect1() => SelectSpawn(0);
     void OnSelect2() => SelectSpawn(1);
     void OnSelect3() => SelectSpawn(2);
