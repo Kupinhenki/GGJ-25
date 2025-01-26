@@ -32,7 +32,7 @@ public class Movement : MonoBehaviour
     public float LastOnWallTime { get; private set; }
     public float LastOnWallRightTime { get; private set; }
     public float LastOnWallLeftTime { get; private set; }
-
+    public bool bouncing { get; set; }
     //Jump
     private bool _isJumpCut;
     private bool _isJumpFalling;
@@ -137,6 +137,7 @@ public class Movement : MonoBehaviour
             if (Physics2D.OverlapBox(_groundCheckPoint.position, _groundCheckSize, 0, _groundLayer) && !IsJumping) //checks if set box overlaps with ground
             {
                 LastOnGroundTime = Data.coyoteTime; //if so sets the lastGrounded to coyoteTime
+                bouncing = false;
             }
 
             //Right Wall Check
@@ -275,6 +276,10 @@ public class Movement : MonoBehaviour
     #region GENERAL METHODS
     public void SetGravityScale(float scale)
     {
+        if (bouncing)
+        {
+            return;
+        }
         RB.gravityScale = scale;
     }
     #endregion
