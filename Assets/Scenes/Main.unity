@@ -563,7 +563,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6278770041072478314, guid: 47071a49f67024530afa7d109b09bb19, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7715950122804132030, guid: 47071a49f67024530afa7d109b09bb19, type: 3}
       propertyPath: circleRad
