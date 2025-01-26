@@ -61,7 +61,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2f260c5c6cc074c4ba98b5289562855c, type: 3}
   - {fileID: 8300000, guid: 98e21505c977b494085f2c25695e5936, type: 3}
   - {fileID: 8300000, guid: 9f599f84c6e95fb4c961a123c0d4b02e, type: 3}
-  - {fileID: 8300000, guid: 2d624bde6b6730e4290935d7335108f7, type: 3}
   bubbleBounceClips:
   - {fileID: 8300000, guid: a29e5e3e3998a40449fbea1f5cebc013, type: 3}
   - {fileID: 8300000, guid: 8b7b7d6d649050840983e8ed1308fc52, type: 3}
@@ -72,8 +71,14 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 914a8637fea439c4fb2dce25984963de, type: 3}
   plopClips:
   - {fileID: 8300000, guid: 2dec0eb09fbf6a14fa206861529b17cb, type: 3}
+  - {fileID: 8300000, guid: a2ff4087c27e54b4b90be117ecd97425, type: 3}
+  - {fileID: 8300000, guid: 1875663333e72c64e8326841992ce8ee, type: 3}
+  selectClips:
+  - {fileID: 8300000, guid: c730359e301098844852d9f33d10f809, type: 3}
+  - {fileID: 8300000, guid: 9ddc93523cc04484099ac3b98e4eff1b, type: 3}
+  - {fileID: 8300000, guid: e02ee11b16c520f4297b939692628064, type: 3}
   mixer: {fileID: 24100000, guid: 07f100ac1b48425409e5babdea8445f0, type: 2}
-  soundPool: []
+  soundSourcePool: []
   variatePitch: 1
   masterGroup: {fileID: 24300002, guid: 07f100ac1b48425409e5babdea8445f0, type: 2}
   musicGroup: {fileID: 47872807894065325, guid: 07f100ac1b48425409e5babdea8445f0, type: 2}

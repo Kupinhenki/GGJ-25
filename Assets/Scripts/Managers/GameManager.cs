@@ -1,8 +1,6 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.InputSystem.XR;
 
 public enum GameState
 {
@@ -138,8 +136,10 @@ public class GameManager : MonoBehaviour
     {
         GameObject instantiatedPrefab = Instantiate(lifeBubblePrefab, bubbleLocations[index].position, Quaternion.identity);
         bubbleLocations[index].GetComponent<BubblePointHandler>().orbsList.Add(instantiatedPrefab);
-        instantiatedPrefab.GetComponent<LifeBubble>().pointHandler = bubbleLocations[index].GetComponent<BubblePointHandler>();
-        instantiatedPrefab.GetComponent<LifeBubble>().owner = creator;
+        var lifeBubble = instantiatedPrefab.GetComponent<LifeBubble>();
+        lifeBubble.pointHandler = bubbleLocations[index].GetComponent<BubblePointHandler>();
+        lifeBubble.owner = creator;
+        lifeBubble.spriteRenderer.material.SetFloat("_Offset", creator.GetLifeBubbleHueOffset(creator.playerId));
         return instantiatedPrefab;
     }
     
