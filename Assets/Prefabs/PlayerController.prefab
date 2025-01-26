@@ -58,10 +58,17 @@ MonoBehaviour:
   - 0.5
   - 0.86
   - 0.59
+  _bubbleSpriteHueOffsets:
+  - 0
+  - 0.5
+  - 0.86
+  - 0.59
   movement: {fileID: 6626977148893211249}
   playerId: 0
   playerInBubble: 0
   animator: {fileID: 8638020840514306110}
+  _fullScreenDamage: {fileID: -9010063893776963964, guid: 59afbf2f83f2ccb409f70a6bca3c3db5, type: 2}
+  _fullScreenDamageMat: {fileID: 2100000, guid: 94220a9395f21b547983cc4d2576af46, type: 2}
   onPlayerDeath:
     m_PersistentCalls:
       m_Calls: []

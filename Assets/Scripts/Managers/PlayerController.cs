@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 {
     static readonly int _OFFSET = Shader.PropertyToID("_Offset");
     [SerializeField] LifeSpawnSelector _lifeSpawnSelector;
-    [SerializeField] Camera _camera;
+    [SerializeField] private Camera _camera;
     [SerializeField] Transform _background;
     [SerializeField] SpriteRenderer _playerSprite;
     [SerializeField] float[] _playerSpriteHueOffsets = new float[4] {
@@ -33,7 +33,17 @@ public class PlayerController : MonoBehaviour
     public int playerId;
     public bool playerInBubble;
     public Animator animator;
+    private bool ballpopped = false;
 
+    
+    [Header("FullscreenShader References")]
+    [SerializeField] private ScriptableRendererFeature _fullScreenDamage;
+    [SerializeField] private Material _fullScreenDamageMat;
+
+    // Shader property IDs for damage state
+    private int _VignetteIntensity = Shader.PropertyToID("_VignetteIntensity");
+    private const float VIGNETTE_INTENSITY_START_VALUE = 0.0f;
+    
     int _numOfLives = LifeSpawnSelector.MAX_LIVES;
     public int numOfLives
     {
@@ -99,11 +109,11 @@ public class PlayerController : MonoBehaviour
             _camera.GetComponent<UniversalAdditionalCameraData>().SetRenderer(1);
             FindFirstObjectByType<VisualEffectController>().ActivateBallState(playerId);
         }
-        else
+        else if (!ballpopped && !playerInBubble)
         {
-            FindFirstObjectByType<VisualEffectController>().DeactivateBallState(playerId);
-            _camera.GetComponent<UniversalAdditionalCameraData>().SetRenderer(0);
             animator.SetBool("InBubble", false);
+            _camera.GetComponent<UniversalAdditionalCameraData>().SetRenderer(0);
+            FindFirstObjectByType<VisualEffectController>().DeactivateBallState(playerId);         
         }
     }
 
@@ -139,7 +149,6 @@ public class PlayerController : MonoBehaviour
                 break;
         }
     }
-
     void ChangeLayerRecursive(Transform parent, int layer)
     {
         parent.gameObject.layer = layer;
@@ -157,12 +166,46 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Player " + playerId + " is dead");
     }
 
-    public IEnumerator BubblePopped(int playerId)
+    public IEnumerator BubblePopped()
     {
+        ballpopped = true;
         _camera.GetComponent<UniversalAdditionalCameraData>().SetRenderer(2);
-        yield return new WaitForSeconds(2f);
+
+        float totalDuration = 2f;
+        float toPeakDuration = totalDuration / 3f;  
+        float toZeroDuration = (2f * totalDuration) / 1.5f;  
+
+        // Animate from 0 to 1.68
+        float elapsedTime = 0f;
+        while (elapsedTime < toPeakDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float intensity = Mathf.Lerp(0f, 1.68f, elapsedTime / toPeakDuration);
+            _fullScreenDamageMat.SetFloat(_VignetteIntensity, intensity);
+            yield return null; // Wait for the next frame
+        }
+
+        // Ensure it reaches the peak intensity exactly
+        _fullScreenDamageMat.SetFloat(_VignetteIntensity, 1.68f);
+
+        // Animate from 1.68 back to 0
+        elapsedTime = 0f;
+        while (elapsedTime < toZeroDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float intensity = Mathf.Lerp(1.68f, 0f, elapsedTime / toZeroDuration);
+            _fullScreenDamageMat.SetFloat(_VignetteIntensity, intensity);
+            yield return null; // Wait for the next frame
+        }
+
+        // Ensure the value is reset to 0
+        _fullScreenDamageMat.SetFloat(_VignetteIntensity, 0f);
+
+        // Restore the original renderer
         _camera.GetComponent<UniversalAdditionalCameraData>().SetRenderer(0);
+        ballpopped = false;
     }
+
 
     // Life Spawn
 

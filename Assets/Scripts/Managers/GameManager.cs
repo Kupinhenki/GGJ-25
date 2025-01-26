@@ -161,7 +161,7 @@ public class GameManager : MonoBehaviour
     public void LoseLife(PlayerController player)
     {
         player.numOfLives--;
-        StartCoroutine(player.BubblePopped(player.playerId));   
+        StartCoroutine(player.BubblePopped());   
     }
 
     public void AddPlayers(PlayerBubbleData[] bubbleDatas)
