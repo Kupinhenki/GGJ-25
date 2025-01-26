@@ -44,17 +44,30 @@ public class PlayerController : MonoBehaviour
     
     PlayerInput _playerInput;
     public PlayerInput playerInput => _playerInput;
+    
+    GameManager _gameManager = null;
 
     void Awake()
     {
         _playerInput = GetComponent<PlayerInput>();
         shoot = movement.GetComponent<Shoot>();
+
+        _gameManager = GameManager.Instance;
+
+        if (_gameManager != null)
+        {
+            GameManager.Instance.OnGameStateChanged.AddListener(HandleGameStateChange);
+        }
     }
     
     void Start()
     {
         onPlayerDeath.AddListener(HandleDeathEvent);
-        GameManager.Instance?.OnGameStateChanged.AddListener(HandleGameStateChange);
+        if (_gameManager == null)
+        {
+            _gameManager = GameManager.Instance;
+            GameManager.Instance.OnGameStateChanged.AddListener(HandleGameStateChange);
+        }
     }
 
     /// <summary>
