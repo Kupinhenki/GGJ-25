@@ -47,6 +47,36 @@ public class AudioManager : MonoBehaviour
     public AudioMixerGroup musicGroup;
     public AudioMixerGroup soundGroup;
 
+    public const string MASTER_VOLUME_KEY = "MasterVolume";
+    public const string MUSIC_VOLUME_KEY = "MusicVolume";
+    public const string SOUND_VOLUME_KEY = "SoundVolume";
+    
+    public float normalizedMasterVolume
+    {
+        get
+        {
+            mixer.GetFloat(MASTER_VOLUME_KEY, out float volume);
+            return Mathf.Pow(10.0f, volume / 20.0f);
+        }
+    }
+
+    public float normalizedMusicVolume
+    {
+        get
+        {
+            mixer.GetFloat(MUSIC_VOLUME_KEY, out float volume);
+            return Mathf.Pow(10.0f, volume / 20.0f);
+        }
+    }
+    
+    public float normalizedSoundVolume
+    {
+        get
+        {
+            mixer.GetFloat(SOUND_VOLUME_KEY, out float volume);
+            return Mathf.Pow(10.0f, volume / 20.0f);
+        }
+    }
 
     /// <summary>
     /// Singleton initialization
@@ -78,7 +108,7 @@ public class AudioManager : MonoBehaviour
     /// <param name="sliderValue"></param>
     public void SetMasterVolume(float sliderValue)
     {
-        mixer.SetFloat("MasterVolume", Mathf.Log10(sliderValue) * 20);
+        mixer.SetFloat(MASTER_VOLUME_KEY, Mathf.Log10(sliderValue) * 20);
     }
 
     /// <summary>
@@ -87,7 +117,7 @@ public class AudioManager : MonoBehaviour
     /// <param name="sliderValue"></param>
     public void SetMusicVolume(float sliderValue)
     {
-        mixer.SetFloat("MusicVolume", Mathf.Log10(sliderValue) * 20);
+        mixer.SetFloat(MUSIC_VOLUME_KEY, Mathf.Log10(sliderValue) * 20);
     }
 
     /// <summary>
@@ -96,7 +126,7 @@ public class AudioManager : MonoBehaviour
     /// <param name="sliderValue"></param>
     public void SetSoundVolume(float sliderValue)
     {
-        mixer.SetFloat("SoundVolume", Mathf.Log10(sliderValue) * 20);
+        mixer.SetFloat(SOUND_VOLUME_KEY, Mathf.Log10(sliderValue) * 20);
     }
 
     public void PlayMusic(AudioClip clip)

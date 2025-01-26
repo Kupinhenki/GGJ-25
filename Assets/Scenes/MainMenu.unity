@@ -394,18 +394,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1463407841}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: SetMusicVolume
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1032383594}
         m_TargetAssemblyTypeName: SelectSounds, Assembly-CSharp
         m_MethodName: PlaySelectSound
@@ -1560,6 +1548,7 @@ GameObject:
   - component: {fileID: 751140290}
   - component: {fileID: 751140292}
   - component: {fileID: 751140291}
+  - component: {fileID: 751140293}
   m_Layer: 5
   m_Name: SettingsMenu
   m_TagString: Untagged
@@ -1627,6 +1616,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 751140289}
   m_CullTransparentMesh: 1
+--- !u!114 &751140293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751140289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a04ce7ff99e04607bfcac13ea4334db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _masterVolumeSlider: {fileID: 1999008679}
+  _musicVolumeSlider: {fileID: 84361030}
+  _soundVolumeSlider: {fileID: 1032383593}
 --- !u!1 &756695368
 GameObject:
   m_ObjectHideFlags: 0
@@ -2435,18 +2439,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1463407841}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: SetSoundVolume
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1032383594}
         m_TargetAssemblyTypeName: SelectSounds, Assembly-CSharp
         m_MethodName: PlaySelectSound
@@ -3104,17 +3096,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1331609460}
   m_CullTransparentMesh: 1
---- !u!114 &1463407841 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9154599861822135391, guid: 212a00c2f9f1abb40acd084e4c49f4ab, type: 3}
-  m_PrefabInstance: {fileID: 1272755240}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6f6aff649d8f0f4a93e7f1e162412a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1644106421
 GameObject:
   m_ObjectHideFlags: 0
@@ -3592,18 +3573,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1463407841}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: SetMasterVolume
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1032383594}
         m_TargetAssemblyTypeName: SelectSounds, Assembly-CSharp
         m_MethodName: PlaySelectSound
