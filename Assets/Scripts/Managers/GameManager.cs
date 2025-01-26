@@ -55,6 +55,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject endScreenCanvas;
 
+    public Transform[] playerSpawnLocations;
+
     /// <summary>
     /// Singleton initialization
     /// </summary>
@@ -167,7 +169,9 @@ public class GameManager : MonoBehaviour
             PlayerBubbleData data = bubbleDatas[i];
             players.Add(data);
             data.controller.playerId = i;
-            data.controller.onPlayerDeath.AddListener(DoSomethingWhenPlayerDies); 
+            data.controller.onPlayerDeath.AddListener(DoSomethingWhenPlayerDies);
+            data.controller.transform.position = playerSpawnLocations[i].position;
+            data.controller.movement.GetComponent<Rigidbody>().position = playerSpawnLocations[i].position;
         }
 
         SwitchGameState(GameState.OnGoing);
