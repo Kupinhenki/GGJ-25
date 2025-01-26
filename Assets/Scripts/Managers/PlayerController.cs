@@ -295,16 +295,30 @@ public class PlayerController : MonoBehaviour
     
     void OnMove(InputValue value)
     {
+        if (GameManager.Instance.currentGameState != GameState.OnGoing)
+        {
+            return;
+        }
+        
         movement.SetMove(value);
     }
 
     void OnJump(InputValue value)
     {
+        if (GameManager.Instance.currentGameState != GameState.OnGoing)
+        {
+            return;
+        }
         movement.SetJump(value);
     }
 
     void OnAttack(InputValue value)
     {
+        if (GameManager.Instance.currentGameState != GameState.OnGoing)
+        {
+            return;
+        }
+        
         if (value.isPressed)
         {
             shoot.ShootBubble(bubbleSpriteHueOffset);

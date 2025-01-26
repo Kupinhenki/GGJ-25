@@ -27,6 +27,8 @@ public class LifeSpawnSelector : MonoBehaviour
             return false;
         }
         
+        AudioManager.Instance.PlaySoundFromAnimationEvent("Select");
+        
         selection.RemoveAt(selection.Count - 1);
         SelectionChanged();
 
@@ -76,6 +78,7 @@ public class LifeSpawnSelector : MonoBehaviour
             return;
         }
         
+        AudioManager.Instance.PlaySoundFromAnimationEvent("Plop");
         selection.Add(index);
         SelectionChanged();
     }
