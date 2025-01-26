@@ -7,9 +7,17 @@ using UnityEngine.Rendering.Universal;
 [RequireComponent(typeof(PlayerInput))]
 public class PlayerController : MonoBehaviour
 {
+    static readonly int _OFFSET = Shader.PropertyToID("_Offset");
     [SerializeField] LifeSpawnSelector _lifeSpawnSelector;
     [SerializeField] Camera _camera;
     [SerializeField] Transform _background;
+    [SerializeField] SpriteRenderer _playerSprite;
+    [SerializeField] float[] _playerSpriteHueOffsets = new float[4] {
+        0,
+        0.5f,
+        0.86f,
+        0.59f
+    };
     public LifeSpawnSelector lifeSpawnSelector => _lifeSpawnSelector;
     
     public Movement movement;
@@ -110,6 +118,9 @@ public class PlayerController : MonoBehaviour
                 _camera.gameObject.SetActive(true);
                 _background.gameObject.SetActive(true);
                 _camera.cullingMask |= 1 << playerLayer;
+                
+                float playerSpriteHueOffset = playerId < _playerSpriteHueOffsets.Length ? _playerSpriteHueOffsets[playerId] : 0;
+                _playerSprite.material.SetFloat(_OFFSET, playerSpriteHueOffset);
                 break;
             case GameState.Ended:
                 movement.gameObject.SetActive(false);
