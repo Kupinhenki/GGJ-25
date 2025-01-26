@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] LifeSpawnSelector _lifeSpawnSelector;
     [SerializeField] Camera _camera;
+    [SerializeField] Transform _background;
     public LifeSpawnSelector lifeSpawnSelector => _lifeSpawnSelector;
     
     public Movement movement;
@@ -99,15 +100,29 @@ public class PlayerController : MonoBehaviour
             case GameState.LifeBubbleSpawn:
                 _camera.gameObject.SetActive(false);
                 movement.gameObject.SetActive(false);
+                _background.gameObject.SetActive(false);
                 break;
             case GameState.OnGoing:
-                _camera.GetComponent<UniversalAdditionalCameraData>().volumeLayerMask |= (1 << LayerMask.NameToLayer("P" + (playerId + 1)));              
+                int playerLayer = LayerMask.NameToLayer("P" + (playerId + 1));
+                _camera.GetComponent<UniversalAdditionalCameraData>().volumeLayerMask |= 1 << playerLayer;
+                ChangeLayerRecursive(_background, playerLayer);
                 movement.gameObject.SetActive(true);
                 _camera.gameObject.SetActive(true);
+                _background.gameObject.SetActive(true);
+                _camera.cullingMask |= 1 << playerLayer;
                 break;
             case GameState.Ended:
                 movement.gameObject.SetActive(false);
                 break;
+        }
+    }
+
+    void ChangeLayerRecursive(Transform parent, int layer)
+    {
+        parent.gameObject.layer = layer;
+        foreach (Transform t in parent)
+        {
+            ChangeLayerRecursive(t, layer);
         }
     }
 
