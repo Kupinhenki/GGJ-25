@@ -23,6 +23,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip[] scoreClips;
     public AudioClip[] plopClips;
     public AudioClip[] selectClips;
+    public AudioClip bgMusic;
 
     /// <summary>
     /// Reference to the audio mixer.
@@ -60,7 +61,12 @@ public class AudioManager : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
         }
     }
-    
+
+    private void Start()
+    {
+        PlayMusic();
+    }
+
     /// <summary>
     /// Modifies master volume based on slider value change.
     /// </summary>
@@ -86,6 +92,14 @@ public class AudioManager : MonoBehaviour
     public void SetSoundVolume(float sliderValue)
     {
         mixer.SetFloat("SoundVolume", Mathf.Log10(sliderValue) * 20);
+    }
+
+    private void PlayMusic()
+    {
+        AudioSource audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.outputAudioMixerGroup = musicGroup;
+        audioSource.clip = bgMusic;
+        audioSource.Play();
     }
 
     /// <summary>

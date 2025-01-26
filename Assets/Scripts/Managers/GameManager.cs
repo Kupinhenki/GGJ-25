@@ -161,7 +161,7 @@ public class GameManager : MonoBehaviour
     public void LoseLife(PlayerController player)
     {
         player.numOfLives--;
-        StartCoroutine(player.BubblePopped(player.playerId));   
+        StartCoroutine(player.BubblePopped());   
     }
 
     public void AddPlayers(PlayerBubbleData[] bubbleDatas)
@@ -172,7 +172,7 @@ public class GameManager : MonoBehaviour
             players.Add(data);
             data.controller.playerId = i;
             data.controller.onPlayerDeath.AddListener(DoSomethingWhenPlayerDies);
-            data.controller.transform.position = playerSpawnLocations[i].position;
+            data.controller.movement.transform.position = playerSpawnLocations[i].position;
             data.controller.movement.GetComponent<Rigidbody2D>().position = playerSpawnLocations[i].position;
             data.controller.movement.spawnLocation = playerSpawnLocations[i];
         }
