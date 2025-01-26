@@ -14,6 +14,9 @@ public enum GameState
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] SpriteRenderer _mapBounds;
+    public SpriteRenderer mapBounds => _mapBounds;
+    
     public static GameManager Instance { get; private set; }
 #if UNITY_EDITOR
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
