@@ -5,7 +5,7 @@ public class EelPlatform : MonoBehaviour
     private int State = 0; // 0 = idle, 1 = extending, 2 = retracting
     private float ExtensionMultiplier = 0.0f;
     private float StartXPos = 0.0f;
-    private float Length = 0.0f;
+    [SerializeField] private float Length = 0.0f;
     [SerializeField] private float Timer = 0.0f;
     [SerializeField] private float TimeBetween = 0.0f;
     [SerializeField] private BoxCollider2D BoxCollider;
@@ -13,7 +13,6 @@ public class EelPlatform : MonoBehaviour
     private void Awake()
     {
         StartXPos = transform.localPosition.x;
-        Length = transform.localScale.x;
     }
 
 
@@ -52,7 +51,7 @@ public class EelPlatform : MonoBehaviour
 
         transform.localPosition = new Vector3(StartXPos + ((Length * 0.9f) * ExtensionMultiplier), 0, 0); // -1.2 -> 1.5
 
-        BoxCollider.size = new Vector2(0.0f + (0.9f * ExtensionMultiplier), 1.0f);
+        BoxCollider.size = new Vector2(0.0f + (1.6f * ExtensionMultiplier), 0.4f);
 
         BoxCollider.offset = new Vector2(0.35f + (-0.40f * ExtensionMultiplier), 0.0f);
     }

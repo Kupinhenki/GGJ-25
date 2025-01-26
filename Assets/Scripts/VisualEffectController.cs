@@ -69,6 +69,16 @@ public class VisualEffectController : MonoBehaviour
         if (colorCurves[playerIndex] != null) colorCurves[playerIndex].active = false;
     }
 
+    //Disable ball state
+    public void DeactivateBallState(int playerIndex)
+    {
+        //if (!IsValidPlayer(playerIndex)) return;
+
+        // Disable Lens Distortion and Color Adjustment for the selected player
+        if (lensDistortions[playerIndex] != null) lensDistortions[playerIndex].active = false;
+        if (colorAdjustments[playerIndex] != null) colorAdjustments[playerIndex].active = false;
+    }
+
     // Call this when the player is "dead"
     public void ActivateDeadState(int playerIndex)
     {
