@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private Shoot shoot;
     public int playerId;
     public bool playerInBubble;
+    public Animator animator;
 
     int _numOfLives = LifeSpawnSelector.MAX_LIVES;
     public int numOfLives
@@ -73,6 +74,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (playerInBubble)
+        {
+            animator.SetBool("InBubble", true);
+        }
+        else
+        {
+            animator.SetBool("InBubble", false);
+        }
+    }
+
     /// <summary>
     /// Called when the game state changes.
     /// 
@@ -102,7 +115,13 @@ public class PlayerController : MonoBehaviour
     {
         FindFirstObjectByType<VisualEffectController>().ActivateDeadState(playerId);
         //Change sprite to dead sprite
+        animator.SetTrigger("Dead");
         Debug.Log("Player " + playerId + " is dead");
+    }
+
+    private void ChangeToGhost()
+    {
+
     }
 
     public IEnumerator BubblePopped(int playerId)
