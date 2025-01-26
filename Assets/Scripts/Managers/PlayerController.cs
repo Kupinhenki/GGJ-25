@@ -97,9 +97,11 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("InBubble", true);
             _camera.GetComponent<UniversalAdditionalCameraData>().SetRenderer(1);
+            FindFirstObjectByType<VisualEffectController>().ActivateBallState(playerId);
         }
         else
         {
+            FindFirstObjectByType<VisualEffectController>().DeactivateBallState(playerId);
             _camera.GetComponent<UniversalAdditionalCameraData>().SetRenderer(0);
             animator.SetBool("InBubble", false);
         }
