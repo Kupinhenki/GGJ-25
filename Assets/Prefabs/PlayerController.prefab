@@ -54,6 +54,7 @@ MonoBehaviour:
   movement: {fileID: 6626977148893211249}
   playerId: 0
   playerInBubble: 0
+  animator: {fileID: 8638020840514306110}
   onPlayerDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -473,6 +474,11 @@ MonoBehaviour:
 --- !u!1 &7944255063024109231 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6352441696529978893, guid: fca37aa11bfa8d545b8c60041d92daa1, type: 3}
+  m_PrefabInstance: {fileID: 3897797253387653282}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8638020840514306110 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4753456787463393436, guid: fca37aa11bfa8d545b8c60041d92daa1, type: 3}
   m_PrefabInstance: {fileID: 3897797253387653282}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4980064408358066777
