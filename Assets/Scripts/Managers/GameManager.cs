@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public enum GameState
 {
@@ -56,6 +58,8 @@ public class GameManager : MonoBehaviour
 
     public Transform[] playerSpawnLocations;
 
+    public Button backToMainMenuButton;
+
     /// <summary>
     /// Singleton initialization
     /// </summary>
@@ -95,6 +99,7 @@ public class GameManager : MonoBehaviour
             case GameState.LifeBubbleSpawn:
                 break;
             case GameState.OnGoing:
+                AudioManager.Instance.PlayMusic(AudioManager.Instance.bgMusicNoVocals);
                 numOfPlayersAlive = players.Count;
                 SpawnLifeBubbles();
                 break;
@@ -106,6 +111,7 @@ public class GameManager : MonoBehaviour
                 if(endScreenCanvas != null)
                 {
                     endScreenCanvas.SetActive(true);
+                    backToMainMenuButton.Select();
                 }
                 break;
             default:
