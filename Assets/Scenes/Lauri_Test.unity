@@ -282,9 +282,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 331781878360448468, guid: bb655907e3eb1334b9087c4e41bcd406, type: 3}
+      propertyPath: m_ColliderPaths.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 547643859175170281, guid: bb655907e3eb1334b9087c4e41bcd406, type: 3}
+      propertyPath: m_ColliderPaths.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3078065663177531252, guid: bb655907e3eb1334b9087c4e41bcd406, type: 3}
       propertyPath: m_Name
       value: LevelGrid
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869914250066001564, guid: bb655907e3eb1334b9087c4e41bcd406, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4549453976279401851, guid: bb655907e3eb1334b9087c4e41bcd406, type: 3}
+      propertyPath: m_ColliderPaths.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5410465216767496777, guid: bb655907e3eb1334b9087c4e41bcd406, type: 3}
+      propertyPath: m_ColliderPaths.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7248152802413720222, guid: bb655907e3eb1334b9087c4e41bcd406, type: 3}
       propertyPath: m_LocalPosition.x
@@ -324,6 +344,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7248152802413720222, guid: bb655907e3eb1334b9087c4e41bcd406, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7837551681945437595, guid: bb655907e3eb1334b9087c4e41bcd406, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8119291831889545958, guid: bb655907e3eb1334b9087c4e41bcd406, type: 3}
+      propertyPath: m_ColliderPaths.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8335778129655674843, guid: bb655907e3eb1334b9087c4e41bcd406, type: 3}
+      propertyPath: m_ColliderPaths.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8735004995312684092, guid: bb655907e3eb1334b9087c4e41bcd406, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8807877790033080577, guid: bb655907e3eb1334b9087c4e41bcd406, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
