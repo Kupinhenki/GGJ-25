@@ -53,6 +53,7 @@ MonoBehaviour:
   _camera: {fileID: 7719165921638874703}
   movement: {fileID: 6626977148893211249}
   playerId: 0
+  playerInBubble: 0
   onPlayerDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -395,6 +396,14 @@ PrefabInstance:
     - target: {fileID: 1438153145562109991, guid: fca37aa11bfa8d545b8c60041d92daa1, type: 3}
       propertyPath: m_SortingLayerID
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3937417576217755878, guid: fca37aa11bfa8d545b8c60041d92daa1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 3937417576217755878, guid: fca37aa11bfa8d545b8c60041d92daa1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.68
       objectReference: {fileID: 0}
     - target: {fileID: 6352441696529978893, guid: fca37aa11bfa8d545b8c60041d92daa1, type: 3}
       propertyPath: m_Name
