@@ -45,17 +45,30 @@ public class PlayerController : MonoBehaviour
     
     PlayerInput _playerInput;
     public PlayerInput playerInput => _playerInput;
+    
+    GameManager _gameManager = null;
 
     void Awake()
     {
         _playerInput = GetComponent<PlayerInput>();
         shoot = movement.GetComponent<Shoot>();
+
+        _gameManager = GameManager.Instance;
+
+        if (_gameManager != null)
+        {
+            GameManager.Instance.OnGameStateChanged.AddListener(HandleGameStateChange);
+        }
     }
     
     void Start()
     {
         onPlayerDeath.AddListener(HandleDeathEvent);
-        GameManager.Instance?.OnGameStateChanged.AddListener(HandleGameStateChange);
+        if (_gameManager == null)
+        {
+            _gameManager = GameManager.Instance;
+            GameManager.Instance.OnGameStateChanged.AddListener(HandleGameStateChange);
+        }
     }
 
     /// <summary>
@@ -111,7 +124,11 @@ public class PlayerController : MonoBehaviour
 
     void SelectSpawn(int index)
     {
-        Debug.Log(index);
+        if (GameManager.Instance == null)
+        {
+            return;
+        }
+        
         if (GameManager.Instance.currentGameState != GameState.LifeBubbleSpawn)
         {
             return;
@@ -122,6 +139,11 @@ public class PlayerController : MonoBehaviour
     
     void OnTryStartGame()
     {
+        if (GameManager.Instance == null)
+        {
+            return;
+        }
+        
         if (GameManager.Instance.currentGameState != GameState.LifeBubbleSpawn)
         {
             return;
@@ -132,6 +154,11 @@ public class PlayerController : MonoBehaviour
 
     void OnUndo()
     {
+        if (GameManager.Instance == null)
+        {
+            return;
+        }
+        
         if (GameManager.Instance.currentGameState != GameState.LifeBubbleSpawn)
         {
             return;

@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: 2199523cfb6d94bc7a68097cb1a59e64
+guid: 4cdf38af365934d78a6b9c03c8205aec
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6753563628063172354
-    second: LightRay_1_0
-  - first:
-      213: 2545624109708324983
-    second: LightRay_1_1
-  - first:
-      213: -6428258755627559354
-    second: LightRay_1_2
+      213: -1609620499090894561
+    second: GROUND2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -78,7 +72,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -106,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: LightRay_1_0
+      name: GROUND2_0
       rect:
         serializedVersion: 2
-        x: 2
+        x: 0
         y: 0
-        width: 2471
-        height: 2148
+        width: 1684
+        height: 883
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,52 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 20724ba765a79bd50800000000000000
-      internalID: 6753563628063172354
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: LightRay_1_1
-      rect:
-        serializedVersion: 2
-        x: 899
-        y: 141
-        width: 1911
-        height: 2007
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 770b5d6f3afd35320800000000000000
-      internalID: 2545624109708324983
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: LightRay_1_2
-      rect:
-        serializedVersion: 2
-        x: 1156
-        y: 351
-        width: 1975
-        height: 1797
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 646568a58bc3ac6a0800000000000000
-      internalID: -6428258755627559354
+      spriteID: f1110882faa79a9e0800000000000000
+      internalID: -1609620499090894561
       vertices: []
       indices: 
       edges: []
@@ -185,9 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      LightRay_1_0: 6753563628063172354
-      LightRay_1_1: 2545624109708324983
-      LightRay_1_2: -6428258755627559354
+      GROUND2_0: -1609620499090894561
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

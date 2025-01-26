@@ -25,6 +25,7 @@ public class LifeBubble : MonoBehaviour
         {
             manager.LoseLife(owner);
             pointHandler.orbsList.Remove(gameObject);
+            AudioManager.Instance.PlaySoundFromAnimationEvent("Score");
             Destroy(gameObject);
         }
     }
