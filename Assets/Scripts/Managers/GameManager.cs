@@ -173,7 +173,7 @@ public class GameManager : MonoBehaviour
             data.controller.playerId = i;
             data.controller.onPlayerDeath.AddListener(DoSomethingWhenPlayerDies);
             data.controller.transform.position = playerSpawnLocations[i].position;
-            data.controller.movement.GetComponent<Rigidbody>().position = playerSpawnLocations[i].position;
+            data.controller.movement.GetComponent<Rigidbody2D>().position = playerSpawnLocations[i].position;
         }
 
         SwitchGameState(GameState.OnGoing);
