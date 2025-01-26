@@ -18,6 +18,14 @@ public class PlayerController : MonoBehaviour
         0.86f,
         0.59f
     };
+    [SerializeField] float[] _bubbleSpriteHueOffsets = new float[4] {
+        0,
+        0.5f,
+        0.86f,
+        0.59f
+    };
+    public float bubbleSpriteHueOffset => playerId < _bubbleSpriteHueOffsets.Length ? _bubbleSpriteHueOffsets[playerId] : 0;
+    
     public LifeSpawnSelector lifeSpawnSelector => _lifeSpawnSelector;
     
     public Movement movement;
@@ -229,7 +237,7 @@ public class PlayerController : MonoBehaviour
     {
         if (value.isPressed)
         {
-            shoot.ShootBubble();
+            shoot.ShootBubble(bubbleSpriteHueOffset);
         }
     }
 }

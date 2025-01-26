@@ -52,11 +52,11 @@ TagManager:
   - name: TrapsAndPickables
     uniqueID: 1014062407
     locked: 0
-  - name: Player
-    uniqueID: 693305753
-    locked: 0
   - name: Eel
     uniqueID: 666261397
+    locked: 0
+  - name: Player
+    uniqueID: 693305753
     locked: 0
   - name: Absolute Foreground
     uniqueID: 3323669133
