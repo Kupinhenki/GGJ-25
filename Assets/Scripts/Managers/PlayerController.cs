@@ -24,7 +24,17 @@ public class PlayerController : MonoBehaviour
         0.86f,
         0.59f
     };
+    
     public float bubbleSpriteHueOffset => playerId < _bubbleSpriteHueOffsets.Length ? _bubbleSpriteHueOffsets[playerId] : 0;
+    
+    [SerializeField] float[] _lifeBubbleHueOffsets = new float[4] {
+        0,
+        0.5f,
+        0.86f,
+        0.59f
+    };
+    
+    public float GetLifeBubbleHueOffset(int i) => i < _lifeBubbleHueOffsets.Length ? _lifeBubbleHueOffsets[i] : 0;
     
     public LifeSpawnSelector lifeSpawnSelector => _lifeSpawnSelector;
     
@@ -97,9 +107,11 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("InBubble", true);
             _camera.GetComponent<UniversalAdditionalCameraData>().SetRenderer(1);
+            FindFirstObjectByType<VisualEffectController>().ActivateBallState(playerId);
         }
         else
         {
+            FindFirstObjectByType<VisualEffectController>().DeactivateBallState(playerId);
             _camera.GetComponent<UniversalAdditionalCameraData>().SetRenderer(0);
             animator.SetBool("InBubble", false);
         }

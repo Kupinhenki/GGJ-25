@@ -6,6 +6,7 @@ namespace UI
     [RequireComponent(typeof(Image))]
     public class LifeIndicator : MonoBehaviour
     {
+        static readonly int _OFFSET = Shader.PropertyToID("_Offset");
         [SerializeField] Sprite _notSelected;
         [SerializeField] Sprite _selected;
 
@@ -16,6 +17,7 @@ namespace UI
         void Awake()
         {
             _img = GetComponent<Image>();
+            _img.material = Instantiate(_img.material);
             SetIsSelected(_isSelected);
         }
 
@@ -23,6 +25,11 @@ namespace UI
         {
             _isSelected = isSelected;
             _img.sprite = _isSelected ? _selected : _notSelected;
+        }
+
+        public void UpdateHueOffset(float offset)
+        {
+            _img.material.SetFloat(_OFFSET, offset);
         }
     }
 }

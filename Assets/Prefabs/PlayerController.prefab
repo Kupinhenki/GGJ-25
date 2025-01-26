@@ -58,6 +58,11 @@ MonoBehaviour:
   - 0.5
   - 0.86
   - 0.59
+  _bubbleSpriteHueOffsets:
+  - 0
+  - 0.5
+  - 0.86
+  - 0.59
   movement: {fileID: 6626977148893211249}
   playerId: 0
   playerInBubble: 0
@@ -407,7 +412,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3937417576217755878, guid: fca37aa11bfa8d545b8c60041d92daa1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.21
+      value: 1.78
       objectReference: {fileID: 0}
     - target: {fileID: 3937417576217755878, guid: fca37aa11bfa8d545b8c60041d92daa1, type: 3}
       propertyPath: m_LocalPosition.y

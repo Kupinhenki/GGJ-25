@@ -9,6 +9,8 @@ namespace UI
         [SerializeField] LifeIndicator _lifeIndicatorPrefab;
         
         readonly List<LifeIndicator> _lifeIndicators = new();
+        
+        float _hueOffset;
 
         public void SetLives(int maxLives)
         {
@@ -20,8 +22,10 @@ namespace UI
             }
             
             while (transform.childCount < maxLives)
-            { 
-                _lifeIndicators.Add(Instantiate(_lifeIndicatorPrefab, transform));
+            {
+                LifeIndicator lifeIndicator = Instantiate(_lifeIndicatorPrefab, transform);
+                _lifeIndicators.Add(lifeIndicator);
+                lifeIndicator.UpdateHueOffset(_hueOffset);
             }
         }
 
@@ -35,6 +39,15 @@ namespace UI
             for (int i = 0; i < _lifeIndicators.Count; i++)
             {
                 _lifeIndicators[i].SetIsSelected(i < lives);
+            }
+        }
+        
+        public void UpdateHueOffset(float offset)
+        {
+            _hueOffset = offset;
+            foreach (LifeIndicator lifeIndicator in _lifeIndicators)
+            {
+                lifeIndicator.UpdateHueOffset(_hueOffset);
             }
         }
     }

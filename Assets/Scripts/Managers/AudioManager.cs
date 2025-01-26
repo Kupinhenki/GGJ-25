@@ -22,6 +22,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip[] bubbleBounceClips;
     public AudioClip[] scoreClips;
     public AudioClip[] plopClips;
+    public AudioClip[] selectClips;
 
     /// <summary>
     /// Reference to the audio mixer.
@@ -151,6 +152,9 @@ public class AudioManager : MonoBehaviour
                 break;
             case "Plop":
                 PlayRandomSound(plopClips);
+                break;
+            case "Select":
+                PlayRandomSound(selectClips);
                 break;
             default:
                 break;
