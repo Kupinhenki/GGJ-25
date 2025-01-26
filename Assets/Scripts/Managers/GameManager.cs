@@ -172,7 +172,7 @@ public class GameManager : MonoBehaviour
             players.Add(data);
             data.controller.playerId = i;
             data.controller.onPlayerDeath.AddListener(DoSomethingWhenPlayerDies);
-            data.controller.transform.position = playerSpawnLocations[i].position;
+            data.controller.movement.transform.position = playerSpawnLocations[i].position;
             data.controller.movement.GetComponent<Rigidbody2D>().position = playerSpawnLocations[i].position;
             data.controller.movement.spawnLocation = playerSpawnLocations[i];
         }
