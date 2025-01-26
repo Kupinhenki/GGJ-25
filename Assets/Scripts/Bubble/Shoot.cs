@@ -13,7 +13,7 @@ public class Shoot : MonoBehaviour
     [SerializeField] private Animator animator;
     public void ShootBubble(float hueOffset)
     {
-        if (!movement.isGhostMode && bubble == null && movement.isActiveAndEnabled)
+        if (!movement.isGhostMode && bubble == null && movement.isActiveAndEnabled && canShoot)
         {
             canShoot = false;
             animator.SetTrigger(_SHOOT);
