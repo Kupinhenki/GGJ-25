@@ -112,7 +112,7 @@ MonoBehaviour:
   oscillationSpeed: 10
   bounceForce: 40
   animator: {fileID: 8209325567051644749}
-  bubbleAnim: {fileID: 6081609782705661126}
+  bubbleAnim: {fileID: 5182450489174260568, guid: 090460237dd1bad47a824c1865d054dc, type: 3}
   bounceCollider: {fileID: -2287381541932875970}
   suckCollider: {fileID: 6277932142164691842}
   edgeCollider: {fileID: 6100136482929661811}
@@ -356,11 +356,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 090460237dd1bad47a824c1865d054dc, type: 3}
---- !u!1 &6081609782705661126 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5182450489174260568, guid: 090460237dd1bad47a824c1865d054dc, type: 3}
-  m_PrefabInstance: {fileID: 1409051240191614878}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7305366144107423276 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8569271943570782642, guid: 090460237dd1bad47a824c1865d054dc, type: 3}
