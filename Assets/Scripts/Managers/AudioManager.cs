@@ -24,6 +24,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip[] plopClips;
     public AudioClip[] selectClips;
     public AudioClip bgMusic;
+    public AudioClip bgMusicNoVocals;
 
     /// <summary>
     /// Reference to the audio mixer.
@@ -35,6 +36,7 @@ public class AudioManager : MonoBehaviour
     /// </summary>
     [ContextMenuItem("Test audio source", "TestAudio")]
     public List<AudioSource> soundSourcePool = new List<AudioSource>();
+    public AudioSource musicSource;
     
     /// <summary>
     /// Enables pitch variation for sounds.
@@ -64,7 +66,10 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        PlayMusic();
+        musicSource = gameObject.AddComponent<AudioSource>();
+        musicSource.outputAudioMixerGroup = musicGroup;
+        musicSource.loop = true;
+        PlayMusic(bgMusic);
     }
 
     /// <summary>
@@ -94,12 +99,10 @@ public class AudioManager : MonoBehaviour
         mixer.SetFloat("SoundVolume", Mathf.Log10(sliderValue) * 20);
     }
 
-    private void PlayMusic()
+    public void PlayMusic(AudioClip clip)
     {
-        AudioSource audioSource = gameObject.AddComponent<AudioSource>();
-        audioSource.outputAudioMixerGroup = musicGroup;
-        audioSource.clip = bgMusic;
-        audioSource.Play();
+        musicSource.clip = clip;
+        musicSource.Play();
     }
 
     /// <summary>

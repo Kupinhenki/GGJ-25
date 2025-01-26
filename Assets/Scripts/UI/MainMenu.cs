@@ -10,6 +10,12 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("Main");
     }
 
+    public void LoadMainMenu()
+    {
+        AudioManager.Instance.PlayMusic(AudioManager.Instance.bgMusic);
+        SceneManager.LoadScene("MainMenu");
+    }
+
     public void SelectObject(Selectable obj)
     {
         obj.Select();

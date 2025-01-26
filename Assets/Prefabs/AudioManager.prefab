@@ -77,7 +77,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c730359e301098844852d9f33d10f809, type: 3}
   - {fileID: 8300000, guid: 9ddc93523cc04484099ac3b98e4eff1b, type: 3}
   - {fileID: 8300000, guid: e02ee11b16c520f4297b939692628064, type: 3}
-  bgMusic: {fileID: 8300000, guid: bf39ee50366a5484191a3c7e2b3cac48, type: 3}
+  bgMusic: {fileID: 8300000, guid: 75d8cd6fbf661b447b1e360629f0f511, type: 3}
+  bgMusicNoVocals: {fileID: 8300000, guid: 45bcf7e73fedd2d43b1d5730aca3d755, type: 3}
   mixer: {fileID: 24100000, guid: 07f100ac1b48425409e5babdea8445f0, type: 2}
   soundSourcePool: []
   variatePitch: 1
