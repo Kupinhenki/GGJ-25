@@ -108,9 +108,8 @@ public class PlayerController : MonoBehaviour
     public IEnumerator BubblePopped(int playerId)
     {
         _camera.GetComponent<UniversalAdditionalCameraData>().SetRenderer(2);
-        WaitForSeconds wait = new WaitForSeconds(2f);
+        yield return new WaitForSeconds(2f);
         _camera.GetComponent<UniversalAdditionalCameraData>().SetRenderer(0);
-        yield return null;
     }
 
     // Life Spawn
