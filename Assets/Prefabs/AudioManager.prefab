@@ -61,7 +61,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2f260c5c6cc074c4ba98b5289562855c, type: 3}
   - {fileID: 8300000, guid: 98e21505c977b494085f2c25695e5936, type: 3}
   - {fileID: 8300000, guid: 9f599f84c6e95fb4c961a123c0d4b02e, type: 3}
-  - {fileID: 8300000, guid: 2d624bde6b6730e4290935d7335108f7, type: 3}
   bubbleBounceClips:
   - {fileID: 8300000, guid: a29e5e3e3998a40449fbea1f5cebc013, type: 3}
   - {fileID: 8300000, guid: 8b7b7d6d649050840983e8ed1308fc52, type: 3}

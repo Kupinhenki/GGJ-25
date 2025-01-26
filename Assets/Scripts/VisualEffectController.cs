@@ -12,20 +12,7 @@ public class VisualEffectController : MonoBehaviour
     private ColorCurves[] colorCurves;
 
     private int activePlayerCount; // Number of currently active players
-
-    /*
-    [Header("FullscreenShader Timers")]
-    [SerializeField] private float dmgStateDuration = 2f; // Duration of dmg state
-    private bool ballStateActive = false;
     
-    [Header("FullscreenShader References")]
-    [SerializeField] private ScriptableRendererFeature _fullScreenDamage;
-    [SerializeField] private Material _fullScreenDamageMat;
-
-    // Shader property IDs for damage state
-    private int _VignetteIntensity = Shader.PropertyToID("_VignetteIntensity");
-    private const float VIGNETTE_INTENSITY_START_VALUE = 0.0f;
-    */
     private void Awake()
     {
         // Dynamically determine the number of active players
