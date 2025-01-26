@@ -60,6 +60,7 @@ namespace Managers
                     for (int i = player.lifeSpawnSelector.selection.Count; i < LifeSpawnSelector.MAX_LIVES; i++)
                     {
                         player.lifeSpawnSelector.selection.Add(Random.Range(0, LifeSpawnSelector.SPAWN_POSITIONS));
+                        player.lifeSpawnSelector.lifeBar.SetSelectedLives(LifeSpawnSelector.MAX_LIVES);
                     }
                 }
 
@@ -166,7 +167,7 @@ namespace Managers
         {
             for (int i = 0; i < _players.Count; i++)
             {
-                _players[i].lifeSpawnSelector.UpdateLifeBarPosition(i);
+                _players[i].lifeSpawnSelector.UpdateLifeBar(i, _players[i].GetLifeBubbleHueOffset(i));
             }
         }
     }
