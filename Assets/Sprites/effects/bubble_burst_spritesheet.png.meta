@@ -1547,7 +1547,64 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bubble_burst_spritesheet_0: 4647606386179502485
+      bubble_burst_spritesheet_1: -2479804985538698115
+      bubble_burst_spritesheet_10: 3105927807241631337
+      bubble_burst_spritesheet_11: -2529742765259993399
+      bubble_burst_spritesheet_12: 6074898425565086221
+      bubble_burst_spritesheet_13: -7312849618602101230
+      bubble_burst_spritesheet_14: -4552535732983169604
+      bubble_burst_spritesheet_15: -3162480832294188753
+      bubble_burst_spritesheet_16: -2582818795009004018
+      bubble_burst_spritesheet_17: 849683413182993854
+      bubble_burst_spritesheet_18: 8233471494545888371
+      bubble_burst_spritesheet_19: -4482257707998089489
+      bubble_burst_spritesheet_2: -162774772007397787
+      bubble_burst_spritesheet_20: 314359012131149626
+      bubble_burst_spritesheet_21: 8918297661216159798
+      bubble_burst_spritesheet_22: -3690484614463026176
+      bubble_burst_spritesheet_23: 8686178279391884370
+      bubble_burst_spritesheet_24: -7962584082238358900
+      bubble_burst_spritesheet_25: -4846567572922647208
+      bubble_burst_spritesheet_26: 7418821848291576616
+      bubble_burst_spritesheet_27: -7777483277408252781
+      bubble_burst_spritesheet_28: -3442526730789530967
+      bubble_burst_spritesheet_29: 7840026489178898224
+      bubble_burst_spritesheet_3: 2728262178759419274
+      bubble_burst_spritesheet_30: -4107245683282603209
+      bubble_burst_spritesheet_31: 1283984994605448101
+      bubble_burst_spritesheet_32: -2815098101006049301
+      bubble_burst_spritesheet_33: -2842987927244542654
+      bubble_burst_spritesheet_34: 7249535087766090972
+      bubble_burst_spritesheet_35: -4297568322444522145
+      bubble_burst_spritesheet_36: 9093103143812203001
+      bubble_burst_spritesheet_37: 6757984791911458590
+      bubble_burst_spritesheet_38: 2824132435421921826
+      bubble_burst_spritesheet_39: 3444266658132525340
+      bubble_burst_spritesheet_4: 4768265453571045039
+      bubble_burst_spritesheet_40: -8028214104928430480
+      bubble_burst_spritesheet_41: -2770594922570411970
+      bubble_burst_spritesheet_42: -2037879563834948731
+      bubble_burst_spritesheet_43: -1229000503122803389
+      bubble_burst_spritesheet_44: 4286699360939874291
+      bubble_burst_spritesheet_45: -2178795014988248606
+      bubble_burst_spritesheet_46: -8707136547995473061
+      bubble_burst_spritesheet_47: -416557121344145726
+      bubble_burst_spritesheet_48: 7956237522848990892
+      bubble_burst_spritesheet_49: -1293363697203204556
+      bubble_burst_spritesheet_5: -3869245505775938750
+      bubble_burst_spritesheet_50: 8921315060281238008
+      bubble_burst_spritesheet_51: 4886974076244635016
+      bubble_burst_spritesheet_52: -1842792850049325018
+      bubble_burst_spritesheet_53: -2431516045484606402
+      bubble_burst_spritesheet_54: -3194499384427365418
+      bubble_burst_spritesheet_55: 6883392266865024281
+      bubble_burst_spritesheet_56: 1285321952808032797
+      bubble_burst_spritesheet_6: -5630315298797020307
+      bubble_burst_spritesheet_7: 3871758109703334570
+      bubble_burst_spritesheet_8: 311782458493099022
+      bubble_burst_spritesheet_9: 6614493135899708652
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

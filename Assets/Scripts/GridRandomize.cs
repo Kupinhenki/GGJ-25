@@ -7,7 +7,7 @@ public class GridRandomize : MonoBehaviour
     public GameObject grid2;
     public GameObject grid3;
 
-    void Start()
+    void Awake()
     {
         grid.SetActive(false);
         grid2.SetActive(false);
