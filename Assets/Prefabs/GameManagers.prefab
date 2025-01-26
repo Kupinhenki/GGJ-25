@@ -417,6 +417,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2119283606654183497}
+  - {fileID: 2284890583497713805}
   m_Father: {fileID: 4227646681068399092}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2582340894502395070
@@ -589,7 +590,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7751793980845530177}
-  - {fileID: 2284890583497713805}
   - {fileID: 5395333538300150308}
   - {fileID: 5956451980928236866}
   - {fileID: 7008332690375818368}
@@ -702,7 +702,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 247
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1192,7 +1192,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 4227646681068399092}
+    m_TransformParent: {fileID: 7008332690375818368}
     m_Modifications:
     - target: {fileID: 151624827322203233, guid: cbe4dcb8aacf7444cac57f1696d906d9, type: 3}
       propertyPath: player
