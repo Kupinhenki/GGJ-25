@@ -83,7 +83,6 @@ public class Bubble : MonoBehaviour
         {
             if (trappedPlayer != null && other.gameObject != trappedPlayer)
             {
-                Debug.Log("Player hit bubble");
                 Destroy(gameObject);
             }
             else
@@ -103,7 +102,6 @@ public class Bubble : MonoBehaviour
             {
                 return;
             }
-            Debug.Log("Player bounce");
             AudioManager.Instance.PlaySoundFromAnimationEvent("BubbleBounce");
             if (collision.gameObject.TryGetComponent<Movement>(out var movement))
             {
@@ -141,7 +139,6 @@ public class Bubble : MonoBehaviour
     {
         if (trappedPlayer != null)
         {
-            // Preserve the original scale's sign
             Vector3 originalScale = trappedPlayer.transform.localScale;
             trappedPlayer.transform.localScale = new Vector3(1.0f * Mathf.Sign(originalScale.x), 1.0f * Mathf.Sign(originalScale.y), originalScale.z);
 
