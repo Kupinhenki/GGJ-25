@@ -52,6 +52,12 @@ MonoBehaviour:
   _lifeSpawnSelector: {fileID: 5866141837025254442}
   _camera: {fileID: 7719165921638874703}
   _background: {fileID: 2159163107808090934}
+  _playerSprite: {fileID: 851026027763847195}
+  _playerSpriteHueOffsets:
+  - 0
+  - 0.5
+  - 0.86
+  - 0.59
   movement: {fileID: 6626977148893211249}
   playerId: 0
   playerInBubble: 0
@@ -464,6 +470,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fca37aa11bfa8d545b8c60041d92daa1, type: 3}
+--- !u!212 &851026027763847195 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4456507933480698041, guid: fca37aa11bfa8d545b8c60041d92daa1, type: 3}
+  m_PrefabInstance: {fileID: 3897797253387653282}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5455126786309151216 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9053151262446897490, guid: fca37aa11bfa8d545b8c60041d92daa1, type: 3}
