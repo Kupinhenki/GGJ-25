@@ -61,6 +61,8 @@ public class Movement : MonoBehaviour
     [SerializeField] private LayerMask _groundLayer;
 
     private float ghostCooldown = 7;
+
+    public Transform spawnLocation;
     #endregion
 
     private void Awake()
@@ -477,6 +479,12 @@ public class Movement : MonoBehaviour
         Gizmos.DrawWireCube(_backWallCheckPoint.position, _wallCheckSize);
     }
     #endregion
+
+    public void Respawn()
+    {
+        GetComponent<Rigidbody2D>().position = spawnLocation.position;
+        transform.position = spawnLocation.position;
+    }
 
     public void SetMove(InputValue value)
     {

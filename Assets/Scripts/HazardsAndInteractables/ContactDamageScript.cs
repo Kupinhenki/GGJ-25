@@ -9,6 +9,7 @@ public class ContactDamageScript : MonoBehaviour
         if (Other.gameObject.CompareTag("Player"))
         {
             // Other.TakeDamage(DamageAmount);
+            Other.gameObject.GetComponent<Movement>().Respawn();
         }
     }
 
@@ -17,6 +18,7 @@ public class ContactDamageScript : MonoBehaviour
         if (Other.gameObject.CompareTag("Player"))
         {
             // Other.TakeDamage(DamageAmount);
+            Other.gameObject.GetComponent<Movement>().Respawn();
         }
     }
 }
