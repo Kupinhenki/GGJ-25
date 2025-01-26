@@ -139,7 +139,9 @@ public class Bubble : MonoBehaviour
 
     void OnDestroy()
     {
-        Instantiate(bubbleAnim, this.transform.position, Quaternion.identity);
+        GameObject burstAnim = Instantiate(bubbleAnim, this.transform.position, Quaternion.identity);
+        Destroy(burstAnim, 0.3f);
+        
         if (trappedPlayer != null)
         {
             Vector3 originalScale = trappedPlayer.transform.localScale;
