@@ -88,6 +88,7 @@ public class Bubble : MonoBehaviour
             }
             else
             {
+                // TODO: Check if player is already in bubble or somehow fix with colliders
                 TrapPlayer(other.gameObject);
             }
         }
@@ -133,7 +134,6 @@ public class Bubble : MonoBehaviour
         PlayerController playerController = trappedPlayer.GetComponentInParent<PlayerController>();
         playerController.playerInBubble = true;
         trappedPlayer.transform.position = this.transform.position;
-       // this.gameObject.transform.localScale =  
     }
 
     // Enable controls for trapped player
