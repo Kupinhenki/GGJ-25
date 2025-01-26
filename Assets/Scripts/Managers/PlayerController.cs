@@ -173,6 +173,7 @@ public class PlayerController : MonoBehaviour
         FindFirstObjectByType<VisualEffectController>().ActivateDeadState(playerId);
         //Change sprite to dead sprite
         animator.SetTrigger("Dead");
+        animator.SetBool("IsGhost", true);
         Debug.Log("Player " + playerId + " is dead");
     }
 
