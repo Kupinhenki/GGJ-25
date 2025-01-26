@@ -145,11 +145,6 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Player " + playerId + " is dead");
     }
 
-    private void ChangeToGhost()
-    {
-
-    }
-
     public IEnumerator BubblePopped(int playerId)
     {
         _camera.GetComponent<UniversalAdditionalCameraData>().SetRenderer(2);
