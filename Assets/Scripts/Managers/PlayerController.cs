@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Camera _camera;
     [SerializeField] Transform _background;
     [SerializeField] SpriteRenderer _playerSprite;
+    [SerializeField] GameObject _normalPlayer;
+    [SerializeField] GameObject _ghostPlayer;
+    [SerializeField] GameObject _bubble;
     [SerializeField] float[] _playerSpriteHueOffsets = new float[4] {
         0.0f,
         0.5f,
@@ -172,9 +175,18 @@ public class PlayerController : MonoBehaviour
     {
         FindFirstObjectByType<VisualEffectController>().ActivateDeadState(playerId);
         //Change sprite to dead sprite
-        animator.SetTrigger("Dead");
-        animator.SetBool("IsGhost", true);
+        animator.SetTrigger("Died");
+        //animator.SetBool("IsGhost", true);
+        StartCoroutine(ChangeToGhost());
         Debug.Log("Player " + playerId + " is dead");
+    }
+
+    private IEnumerator ChangeToGhost()
+    {    
+        yield return new WaitForSeconds(1f);
+        _normalPlayer.SetActive(false);
+        _bubble.SetActive(false);
+        _ghostPlayer.SetActive(true);
     }
 
     public IEnumerator BubblePopped()
