@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
@@ -13,6 +14,13 @@ public class FollowPlayer : MonoBehaviour
 
     private float stationaryTime = 0f; // Tracks how long the player has been stationary
     [SerializeField] private float stationaryDelay = 1f; // Time in seconds before resetting the camera
+
+    Camera _cam;
+
+    void Awake()
+    {
+        _cam = GetComponent<Camera>();
+    }
 
     void Start()
     {
@@ -71,6 +79,21 @@ public class FollowPlayer : MonoBehaviour
         targetPoint.x = player.transform.position.x + lookOffset;
        
         transform.position = Vector3.Lerp(transform.position, targetPoint, followSpeed * Time.deltaTime);
+        
+        SpriteRenderer mapBounds = GameManager.Instance?.mapBounds;
+        if (mapBounds != null)
+        {
+            Bounds bounds = mapBounds.bounds;
+            float screenRatio = (float)_cam.pixelWidth / _cam.pixelHeight;
+
+            float viewHeight = _cam.orthographicSize;
+            float viewWidth = viewHeight * screenRatio;
+
+            Vector3 pos = transform.position;
+            pos.x = Mathf.Clamp(pos.x, bounds.min.x + viewWidth, bounds.max.x - viewWidth);
+            pos.y = Mathf.Clamp(pos.y, bounds.min.y + viewHeight, bounds.max.y - viewHeight);
+            transform.position = pos;
+        }
     }
 }
 

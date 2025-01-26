@@ -11,6 +11,8 @@ public class Bubble : MonoBehaviour
     [SerializeField] private float oscillationScale = 0.001f;
     [SerializeField] private float oscillationSpeed = 10;
     [SerializeField] private float bounceForce = 40f;
+    [SerializeField] private Animator animator;
+    [SerializeField] private GameObject bubbleAnim;
     
     private float maxScale = 1f;
     private float growthDuration = 0.3f;
@@ -152,6 +154,5 @@ public class Bubble : MonoBehaviour
             playerController.playerInBubble = false;
             trappedPlayer = null;
         }
-
-    }
+    }  
 }

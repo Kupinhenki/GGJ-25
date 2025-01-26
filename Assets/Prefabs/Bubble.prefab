@@ -110,6 +110,8 @@ MonoBehaviour:
   oscillationScale: 0.001
   oscillationSpeed: 10
   bounceForce: 40
+  animator: {fileID: 7088831532853682387, guid: 090460237dd1bad47a824c1865d054dc, type: 3}
+  bubbleAnim: {fileID: 5182450489174260568, guid: 090460237dd1bad47a824c1865d054dc, type: 3}
   trappedPlayer: {fileID: 0}
   rb: {fileID: 1110765656206363832}
 --- !u!50 &1110765656206363832

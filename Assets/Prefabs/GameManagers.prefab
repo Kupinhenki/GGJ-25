@@ -1406,6 +1406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 432c1694bb88a5f4f823f6de88d65b2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mapBounds: {fileID: 6888760023720927852}
   bubbleLocations:
   - {fileID: 6048029774874203247}
   - {fileID: 5977802447131648570}
@@ -1425,6 +1426,7 @@ MonoBehaviour:
   - {fileID: 51291359206187190}
   - {fileID: 5794000396880538498}
   - {fileID: 7879910884199998049}
+  backToMainMenuButton: {fileID: 0}
 --- !u!1 &8448000298352126444
 GameObject:
   m_ObjectHideFlags: 0
