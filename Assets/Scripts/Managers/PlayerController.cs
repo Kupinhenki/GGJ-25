@@ -14,7 +14,8 @@ public class PlayerController : MonoBehaviour
     public Movement movement;
     private Shoot shoot;
     public int playerId;
-    
+    public bool playerInBubble;
+
     int _numOfLives = LifeSpawnSelector.MAX_LIVES;
     public int numOfLives
     {
@@ -52,6 +53,7 @@ public class PlayerController : MonoBehaviour
     {
         _playerInput = GetComponent<PlayerInput>();
         shoot = movement.GetComponent<Shoot>();
+        playerInBubble = false;
 
         _gameManager = GameManager.Instance;
 
