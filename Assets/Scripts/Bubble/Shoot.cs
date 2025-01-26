@@ -24,7 +24,7 @@ public class Shoot : MonoBehaviour
             bubbleScript.ShootBubble(direction);
             
             AudioManager.Instance.PlaySoundFromAnimationEvent("Shoot");
-            Invoke("SetCanShootTrue", minimumShootCooldown);
+            Invoke(nameof(SetCanShootTrue), minimumShootCooldown);
         }
     }
 
