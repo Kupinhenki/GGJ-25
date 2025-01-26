@@ -12,14 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: South
       objectReference: {fileID: 0}
-    - target: {fileID: 2476633959098918850, guid: 87e931f032ded47278e57ee33feadcdd, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -7543488581403483501, guid: 84bcbb2fe7aa10d41985da8f3db9f135, type: 3}
     - target: {fileID: 2485728561765711360, guid: 87e931f032ded47278e57ee33feadcdd, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -3480238167726756306, guid: 84bcbb2fe7aa10d41985da8f3db9f135, type: 3}
+      objectReference: {fileID: 177483808, guid: 84bcbb2fe7aa10d41985da8f3db9f135, type: 3}
     - target: {fileID: 4987168445712769597, guid: 87e931f032ded47278e57ee33feadcdd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

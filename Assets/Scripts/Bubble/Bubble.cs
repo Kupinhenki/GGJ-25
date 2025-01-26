@@ -13,7 +13,13 @@ public class Bubble : MonoBehaviour
     [SerializeField] private float bounceForce = 40f;
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject bubbleAnim;
-    
+    [SerializeField] public Collider2D bounceCollider;
+    [SerializeField] public Collider2D suckCollider;
+    [SerializeField] public Collider2D edgeCollider;
+    private Rigidbody objectRigidbody;
+    private SpriteRenderer spriteRenderer;
+
+
     private float maxScale = 1f;
     private float growthDuration = 0.3f;
     [SerializeField] private GameObject trappedPlayer;
@@ -22,7 +28,9 @@ public class Bubble : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        Destroy(gameObject, lifetime);
+        objectRigidbody = GetComponent<Rigidbody>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        Invoke(nameof(BurstBubble), lifetime);
         StartCoroutine(GrowBubble());
     }
 
@@ -85,7 +93,7 @@ public class Bubble : MonoBehaviour
         {
             if (trappedPlayer != null && other.gameObject != trappedPlayer)
             {
-                Destroy(gameObject);
+                BurstBubble();
             }
             else
             {
@@ -114,7 +122,7 @@ public class Bubble : MonoBehaviour
                 movement.RB.AddForce(Vector2.up * tempForce, ForceMode2D.Impulse);
                 movement.bouncing = true;
             }
-            Destroy(this.gameObject);
+            BurstBubble();
         }
     }
 
@@ -136,9 +144,14 @@ public class Bubble : MonoBehaviour
         trappedPlayer.transform.position = this.transform.position;
     }
 
-    // Enable controls for trapped player
-    void OnDestroy()
+    // Enable controls for trapped player and play animation
+    private void BurstBubble() 
     {
+        //Instantiate(bubbleAnim, this.transform.position, Quaternion.identity);
+        if (bounceCollider != null) bounceCollider.enabled = false;
+        if (suckCollider != null) suckCollider.enabled = false;
+        if (edgeCollider != null) edgeCollider.enabled = false;
+        if (spriteRenderer != null) spriteRenderer.enabled = false;
         if (trappedPlayer != null)
         {
             Vector3 originalScale = trappedPlayer.transform.localScale;
@@ -154,5 +167,15 @@ public class Bubble : MonoBehaviour
             playerController.playerInBubble = false;
             trappedPlayer = null;
         }
+        bubbleAnim.SetActive(true);
+        animator.SetTrigger("Pop");
+        Destroy(gameObject, 1f);
+    }
+
+
+
+    void OnDestroy()
+    {
+
     }  
 }
