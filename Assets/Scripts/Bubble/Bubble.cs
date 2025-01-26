@@ -12,7 +12,6 @@ public class Bubble : MonoBehaviour
     [SerializeField] private float oscillationSpeed = 10;
     [SerializeField] private float bounceForce = 40f;
     
-    private float timer;
     private float maxScale = 1f;
     private float growthDuration = 0.3f;
     [SerializeField] private GameObject trappedPlayer;
@@ -20,16 +19,13 @@ public class Bubble : MonoBehaviour
 
     void Start()
     {
-        timer = 0;
         rb = GetComponent<Rigidbody2D>();
         Destroy(gameObject, lifetime);
-        //StartCoroutine(GrowBubble());
+        StartCoroutine(GrowBubble());
     }
 
     private void LateUpdate()
     {
-        //timer += Time.deltaTime;
-        //rb.transform.Translate(new Vector2(0, 1f * Oscillate(timer, 10, oscillationScale)));
         if (trappedPlayer != null)
         {
             trappedPlayer.transform.position = this.transform.position;
@@ -55,11 +51,6 @@ public class Bubble : MonoBehaviour
         }
 
         transform.localScale = targetScale;
-    }
-
-    float Oscillate(float time, float speed, float scale)
-    {
-        return Mathf.Cos(time * speed / Mathf.PI) * scale;
     }
 
     public void DecelerateOnXAxis()
@@ -92,16 +83,13 @@ public class Bubble : MonoBehaviour
         {
             if (trappedPlayer != null && other.gameObject != trappedPlayer)
             {
+                Debug.Log("Player hit bubble");
                 Destroy(gameObject);
             }
             else
             {
                 TrapPlayer(other.gameObject);
             }
-        }
-        else if (other.CompareTag("Obstacle") || other.CompareTag("Bubble"))
-        {
-            Destroy(gameObject);
         }
     }
 
@@ -110,6 +98,11 @@ public class Bubble : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
+            if(trappedPlayer != null && collision.gameObject == trappedPlayer)
+            {
+                return;
+            }
+            Debug.Log("Player bounce");
             AudioManager.Instance.PlaySoundFromAnimationEvent("BubbleBounce");
             if (collision.gameObject.TryGetComponent<Movement>(out var movement))
             {
