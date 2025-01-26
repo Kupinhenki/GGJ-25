@@ -96,9 +96,11 @@ public class PlayerController : MonoBehaviour
         if (playerInBubble)
         {
             animator.SetBool("InBubble", true);
+            _camera.GetComponent<UniversalAdditionalCameraData>().SetRenderer(1);
         }
         else
         {
+            _camera.GetComponent<UniversalAdditionalCameraData>().SetRenderer(0);
             animator.SetBool("InBubble", false);
         }
     }
