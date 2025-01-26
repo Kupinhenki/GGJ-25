@@ -13,25 +13,25 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform _background;
     [SerializeField] SpriteRenderer _playerSprite;
     [SerializeField] float[] _playerSpriteHueOffsets = new float[4] {
-        0,
+        0.0f,
         0.5f,
         0.86f,
-        0.59f
+        0.207f
     };
     [SerializeField] float[] _bubbleSpriteHueOffsets = new float[4] {
-        0,
-        0.5f,
-        0.86f,
-        0.59f
+        0.595f,
+        0.0f,
+        0.273f,
+        0.818f
     };
     
     public float bubbleSpriteHueOffset => playerId < _bubbleSpriteHueOffsets.Length ? _bubbleSpriteHueOffsets[playerId] : 0;
     
     [SerializeField] float[] _lifeBubbleHueOffsets = new float[4] {
-        0,
-        0.5f,
-        0.86f,
-        0.59f
+        0.53f,
+        0.0f,
+        0.347f,
+        0.802f
     };
     
     public float GetLifeBubbleHueOffset(int i) => i < _lifeBubbleHueOffsets.Length ? _lifeBubbleHueOffsets[i] : 0;

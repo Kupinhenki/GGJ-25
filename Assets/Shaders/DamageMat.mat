@@ -42,7 +42,7 @@ Material:
     - _NoiseNoise: 2
     - _NoisePower: 1
     - _NoiseSpeed: 4
-    - _VignetteIntensity: 1.68
+    - _VignetteIntensity: 0.8296595
     - _VignettePower: 6.01
     m_Colors:
     - _Noise: {r: 0.1, g: 2, b: 1, a: 0}

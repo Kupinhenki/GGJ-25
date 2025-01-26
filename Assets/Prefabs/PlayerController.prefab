@@ -57,17 +57,17 @@ MonoBehaviour:
   - 0
   - 0.5
   - 0.86
-  - 0.59
+  - 0.207
   _bubbleSpriteHueOffsets:
+  - 0.595
   - 0
-  - 0.5
-  - 0.86
-  - 0.59
+  - 0.273
+  - 0.818
   _lifeBubbleHueOffsets:
+  - 0.53
   - 0
-  - 0.5
-  - 0.86
-  - 0.59
+  - 0.347
+  - 0.802
   movement: {fileID: 6626977148893211249}
   playerId: 0
   playerInBubble: 0
