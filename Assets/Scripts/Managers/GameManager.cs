@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem.XR;
 
 public enum GameState
 {
@@ -160,6 +161,7 @@ public class GameManager : MonoBehaviour
     public void LoseLife(PlayerController player)
     {
         player.numOfLives--;
+        StartCoroutine(player.BubblePopped(player.playerId));   
     }
 
     public void AddPlayers(PlayerBubbleData[] bubbleDatas)
@@ -181,7 +183,8 @@ public class GameManager : MonoBehaviour
     {
         // I'm doing something
         numOfPlayersAlive--;
-        
+        AudioManager.Instance.PlaySoundFromAnimationEvent("Death");
+
         if(currentGameState == GameState.OnGoing && numOfPlayersAlive <= 1)
         {
             // Pit�� ehk� teh� jotain muutakin kun peli loppuu

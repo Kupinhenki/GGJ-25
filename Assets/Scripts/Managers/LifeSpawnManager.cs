@@ -50,6 +50,9 @@ namespace Managers
                 if (PlayerInputManager.instance.playerCount == 0)
                 {
                     PlayerInputManager.instance.JoinPlayer();
+                    PlayerInputManager.instance.JoinPlayer();
+                    PlayerInputManager.instance.JoinPlayer();
+                    PlayerInputManager.instance.JoinPlayer();
                 }
 
                 foreach (PlayerController player in _players)
@@ -138,6 +141,7 @@ namespace Managers
 
         void StartGame()
         {
+            PlayerInputManager.instance.DisableJoining();
             _startText.gameObject.SetActive(false);
             _mainCamera.cullingMask = 0;
             PlayerInputManager.instance.splitScreen = true;
