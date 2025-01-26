@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -88,9 +89,17 @@ public class PlayerController : MonoBehaviour
         //Change sprite to dead sprite
         Debug.Log("Player " + playerId + " is dead");
     }
-    
+
+    public IEnumerator BubblePopped(int playerId)
+    {
+        _camera.GetComponent<UniversalAdditionalCameraData>().SetRenderer(2);
+        WaitForSeconds wait = new WaitForSeconds(2f);
+        _camera.GetComponent<UniversalAdditionalCameraData>().SetRenderer(0);
+        yield return null;
+    }
+
     // Life Spawn
-    
+
     void OnSelect1() => SelectSpawn(0);
     void OnSelect2() => SelectSpawn(1);
     void OnSelect3() => SelectSpawn(2);
