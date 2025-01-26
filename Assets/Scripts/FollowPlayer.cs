@@ -22,12 +22,13 @@ public class FollowPlayer : MonoBehaviour
 
     private void LateUpdate()
     {
-         //If player is on the ground, follow them on the y axis
+        /* //If player is on the ground, follow them on the y axis
         if (player.LastOnGroundTime > 0.1f)
         {
-            targetPoint.y = player.transform.position.y;
+            
         }
-        
+        */
+        targetPoint.y = player.transform.position.y;
         //targetPoint.y = player.transform.position.y;
         if (transform.position.y - player.transform.position.y > maxVerticalOffset)
         {

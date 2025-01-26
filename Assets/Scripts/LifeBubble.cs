@@ -3,15 +3,11 @@ using UnityEngine;
 public class LifeBubble : MonoBehaviour
 {
     public PlayerController owner;
-    private GameManager manager;
+    [SerializeField] SpriteRenderer _spriteRenderer;
+    public SpriteRenderer spriteRenderer => _spriteRenderer;
 
     public float currentAngle;
     public BubblePointHandler pointHandler;
-
-    private void Start()
-    {
-        manager = GameManager.Instance;
-    }
 
     /// <summary>
     /// Lose life for the owning player when this collider is hit and it wasn't the owner.
@@ -23,7 +19,7 @@ public class LifeBubble : MonoBehaviour
 
         if (refe != owner.movement && refe != null)
         {
-            manager.LoseLife(owner);
+            GameManager.Instance.LoseLife(owner);
             pointHandler.orbsList.Remove(gameObject);
             AudioManager.Instance.PlaySoundFromAnimationEvent("Score");
             Destroy(gameObject);

@@ -57,7 +57,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: ac81f52c3b7c34a17849d408751dbaeb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -306,6 +306,7 @@ MonoBehaviour:
   _groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  spawnLocation: {fileID: 0}
 --- !u!50 &7724712500207141933
 Rigidbody2D:
   serializedVersion: 5
@@ -386,6 +387,8 @@ MonoBehaviour:
   bubbleSpawnPoint: {fileID: 3937417576217755878}
   movement: {fileID: 7917329692594748115}
   bubble: {fileID: 0}
+  minimumShootCooldown: 1
+  canShoot: 1
 --- !u!1 &8009557241483028120
 GameObject:
   m_ObjectHideFlags: 0

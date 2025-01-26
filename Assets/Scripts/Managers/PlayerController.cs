@@ -7,9 +7,35 @@ using UnityEngine.Rendering.Universal;
 [RequireComponent(typeof(PlayerInput))]
 public class PlayerController : MonoBehaviour
 {
+    static readonly int _OFFSET = Shader.PropertyToID("_Offset");
     [SerializeField] LifeSpawnSelector _lifeSpawnSelector;
     [SerializeField] Camera _camera;
     [SerializeField] Transform _background;
+    [SerializeField] SpriteRenderer _playerSprite;
+    [SerializeField] float[] _playerSpriteHueOffsets = new float[4] {
+        0,
+        0.5f,
+        0.86f,
+        0.59f
+    };
+    [SerializeField] float[] _bubbleSpriteHueOffsets = new float[4] {
+        0,
+        0.5f,
+        0.86f,
+        0.59f
+    };
+    
+    public float bubbleSpriteHueOffset => playerId < _bubbleSpriteHueOffsets.Length ? _bubbleSpriteHueOffsets[playerId] : 0;
+    
+    [SerializeField] float[] _lifeBubbleHueOffsets = new float[4] {
+        0,
+        0.5f,
+        0.86f,
+        0.59f
+    };
+    
+    public float GetLifeBubbleHueOffset(int i) => i < _lifeBubbleHueOffsets.Length ? _lifeBubbleHueOffsets[i] : 0;
+    
     public LifeSpawnSelector lifeSpawnSelector => _lifeSpawnSelector;
     
     public Movement movement;
@@ -80,9 +106,13 @@ public class PlayerController : MonoBehaviour
         if (playerInBubble)
         {
             animator.SetBool("InBubble", true);
+            _camera.GetComponent<UniversalAdditionalCameraData>().SetRenderer(1);
+            FindFirstObjectByType<VisualEffectController>().ActivateBallState(playerId);
         }
         else
         {
+            FindFirstObjectByType<VisualEffectController>().DeactivateBallState(playerId);
+            _camera.GetComponent<UniversalAdditionalCameraData>().SetRenderer(0);
             animator.SetBool("InBubble", false);
         }
     }
@@ -110,6 +140,9 @@ public class PlayerController : MonoBehaviour
                 _camera.gameObject.SetActive(true);
                 _background.gameObject.SetActive(true);
                 _camera.cullingMask |= 1 << playerLayer;
+                
+                float playerSpriteHueOffset = playerId < _playerSpriteHueOffsets.Length ? _playerSpriteHueOffsets[playerId] : 0;
+                _playerSprite.material.SetFloat(_OFFSET, playerSpriteHueOffset);
                 break;
             case GameState.Ended:
                 movement.gameObject.SetActive(false);
@@ -132,11 +165,6 @@ public class PlayerController : MonoBehaviour
         //Change sprite to dead sprite
         animator.SetTrigger("Dead");
         Debug.Log("Player " + playerId + " is dead");
-    }
-
-    private void ChangeToGhost()
-    {
-
     }
 
     public IEnumerator BubblePopped(int playerId)
@@ -223,7 +251,7 @@ public class PlayerController : MonoBehaviour
     {
         if (value.isPressed)
         {
-            shoot.ShootBubble();
+            shoot.ShootBubble(bubbleSpriteHueOffset);
         }
     }
 }

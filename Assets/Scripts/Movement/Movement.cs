@@ -14,6 +14,7 @@ public class Movement : MonoBehaviour
 
     public MovementData Data;
     public MovementData GhostData;
+    public Animator animator;
 
     #region Variables
     //Components
@@ -103,6 +104,15 @@ public class Movement : MonoBehaviour
 
             return;
         }
+        if (LastOnWallTime > 0)
+        {
+            animator.SetBool("Sliding", true);
+        }
+        else
+        {
+            animator.SetBool("Sliding", false);
+        }
+
 
         #region TIMERS
         LastOnGroundTime -= Time.deltaTime;
@@ -489,6 +499,14 @@ public class Movement : MonoBehaviour
     public void SetMove(InputValue value)
     {
         _moveInput = value != null ? value.Get<Vector2>() : Vector2.zero;
+        if (_moveInput.x != 0)
+        {
+            animator.SetBool("IsRunning", true);
+        }
+        else
+        {
+            animator.SetBool("IsRunning", false);
+        }
     }
 
     public void SetJump(InputValue value)
@@ -498,6 +516,7 @@ public class Movement : MonoBehaviour
         {
             OnJumpInput();
             AudioManager.Instance.PlaySoundFromAnimationEvent("Jump");
+            animator.SetTrigger("Jump");
         }
         else
         {
