@@ -272,7 +272,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      haamu_spritesheet_0: 4491859308099060965
+      haamu_spritesheet_1: 2361559514730507616
+      haamu_spritesheet_2: -3270370718462007950
+      haamu_spritesheet_3: -4930474075196937059
+      haamu_spritesheet_4: -4800562272006702572
+      haamu_spritesheet_5: -8282066492552356084
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
