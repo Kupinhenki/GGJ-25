@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Shoot))]
 public class Movement : MonoBehaviour
 {
+    static readonly int _JUMP = Animator.StringToHash("Jump");
     //Scriptable object which holds all the player's movement parameters. If you don't want to use it
     //just paste in all the parameters, though you will need to manuly change all references in this script
 
@@ -379,6 +380,9 @@ public class Movement : MonoBehaviour
 
         RB.AddForce(Vector2.up * force, ForceMode2D.Impulse);
         #endregion
+        
+        AudioManager.Instance.PlaySoundFromAnimationEvent("Jump");
+        animator.SetTrigger(_JUMP);
     }
 
     private void WallJump(int dir)
@@ -515,8 +519,6 @@ public class Movement : MonoBehaviour
         if (value.isPressed)
         {
             OnJumpInput();
-            AudioManager.Instance.PlaySoundFromAnimationEvent("Jump");
-            animator.SetTrigger("Jump");
         }
         else
         {

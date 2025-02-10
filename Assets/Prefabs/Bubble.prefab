@@ -113,9 +113,6 @@ MonoBehaviour:
   bounceForce: 40
   animator: {fileID: 8209325567051644749}
   bubbleAnim: {fileID: 5182450489174260568, guid: 090460237dd1bad47a824c1865d054dc, type: 3}
-  bounceCollider: {fileID: -2287381541932875970}
-  suckCollider: {fileID: 6277932142164691842}
-  edgeCollider: {fileID: 6100136482929661811}
   trappedPlayer: {fileID: 0}
   rb: {fileID: 1110765656206363832}
 --- !u!50 &1110765656206363832
@@ -143,7 +140,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!58 &6277932142164691842
 CircleCollider2D:
