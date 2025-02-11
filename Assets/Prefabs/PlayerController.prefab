@@ -53,6 +53,7 @@ MonoBehaviour:
   _camera: {fileID: 7719165921638874703}
   _background: {fileID: 2159163107808090934}
   _playerSprite: {fileID: 851026027763847195}
+  _ghostSprite: {fileID: 969793938060110951}
   _normalPlayer: {fileID: 3506144484944632352}
   _ghostPlayer: {fileID: 7489379214612020742}
   _bubble: {fileID: 6470389502977511233}
@@ -71,6 +72,11 @@ MonoBehaviour:
   - 0
   - 0.347
   - 0.802
+  _notSelectedLifeBubbleHueOffsets:
+  - 0
+  - 0.5
+  - 0.825
+  - 0.285
   movement: {fileID: 6626977148893211249}
   playerId: 0
   playerInBubble: 0
@@ -672,6 +678,11 @@ PrefabInstance:
 --- !u!212 &851026027763847195 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4456507933480698041, guid: fca37aa11bfa8d545b8c60041d92daa1, type: 3}
+  m_PrefabInstance: {fileID: 3897797253387653282}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &969793938060110951 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4279166771028327621, guid: fca37aa11bfa8d545b8c60041d92daa1, type: 3}
   m_PrefabInstance: {fileID: 3897797253387653282}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &3506144484944632352 stripped

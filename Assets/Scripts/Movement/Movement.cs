@@ -1,4 +1,3 @@
-using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +6,10 @@ using UnityEngine.InputSystem;
 public class Movement : MonoBehaviour
 {
     static readonly int _JUMP = Animator.StringToHash("Jump");
+
+    static readonly int _IS_RUNNING = Animator.StringToHash("IsRunning");
+
+    static readonly int _SLIDING = Animator.StringToHash("Sliding");
     //Scriptable object which holds all the player's movement parameters. If you don't want to use it
     //just paste in all the parameters, though you will need to manuly change all references in this script
 
@@ -107,11 +110,11 @@ public class Movement : MonoBehaviour
         }
         if (LastOnWallTime > 0)
         {
-            animator.SetBool("Sliding", true);
+            animator.SetBool(_SLIDING, true);
         }
         else
         {
-            animator.SetBool("Sliding", false);
+            animator.SetBool(_SLIDING, false);
         }
 
 
@@ -169,7 +172,7 @@ public class Movement : MonoBehaviour
         #endregion
 
         #region JUMP CHECKS
-        if (IsJumping && RB.linearVelocity.y < 0)
+        if (IsJumping && RB.linearVelocity.y <= 0)
         {
             IsJumping = false;
 
@@ -496,7 +499,7 @@ public class Movement : MonoBehaviour
 
     public void Respawn()
     {
-        GetComponent<Rigidbody2D>().position = spawnLocation.position;
+        RB.position = spawnLocation.position;
         transform.position = spawnLocation.position;
     }
 
@@ -505,11 +508,11 @@ public class Movement : MonoBehaviour
         _moveInput = value != null ? value.Get<Vector2>() : Vector2.zero;
         if (_moveInput.x != 0)
         {
-            animator.SetBool("IsRunning", true);
+            animator.SetBool(_IS_RUNNING, true);
         }
         else
         {
-            animator.SetBool("IsRunning", false);
+            animator.SetBool(_IS_RUNNING, false);
         }
     }
 

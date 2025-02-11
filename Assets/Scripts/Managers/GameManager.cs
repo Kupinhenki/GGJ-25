@@ -14,6 +14,7 @@ public enum GameState
 
 public class GameManager : MonoBehaviour
 {
+    static readonly int _OFFSET = Shader.PropertyToID("_Offset");
     [SerializeField] SpriteRenderer _mapBounds;
     public SpriteRenderer mapBounds => _mapBounds;
     
@@ -114,7 +115,6 @@ public class GameManager : MonoBehaviour
                 if(endScreenCanvas != null)
                 {
                     endScreenCanvas.SetActive(true);
-                    backToMainMenuButton.Select();
                 }
                 break;
             default:
@@ -148,7 +148,7 @@ public class GameManager : MonoBehaviour
         var lifeBubble = instantiatedPrefab.GetComponent<LifeBubble>();
         lifeBubble.pointHandler = bubbleLocations[index].GetComponent<BubblePointHandler>();
         lifeBubble.owner = creator;
-        lifeBubble.spriteRenderer.material.SetFloat("_Offset", creator.GetLifeBubbleHueOffset(creator.playerId));
+        lifeBubble.spriteRenderer.material.SetFloat(_OFFSET, creator.GetLifeBubbleHueOffset(creator.playerId));
         return instantiatedPrefab;
     }
     

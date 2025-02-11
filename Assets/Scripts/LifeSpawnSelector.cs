@@ -40,9 +40,9 @@ public class LifeSpawnSelector : MonoBehaviour
         onStartGamePressed?.Invoke();
     }
     
-    public void UpdateLifeBar(int index, float hueOffset)
+    public void UpdateLifeBar(int index, float hueOffset, float notSelectedHueOffset)
     { 
-        _lifeBar.UpdateHueOffset(hueOffset);
+        _lifeBar.UpdateHueOffset(hueOffset, notSelectedHueOffset);
         
         var rectTransform = _lifeBar.transform as RectTransform;
         if (rectTransform == null)

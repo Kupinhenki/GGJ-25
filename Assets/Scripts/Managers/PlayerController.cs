@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Camera _camera;
     [SerializeField] Transform _background;
     [SerializeField] SpriteRenderer _playerSprite;
+    [SerializeField] SpriteRenderer _ghostSprite;
     [SerializeField] GameObject _normalPlayer;
     [SerializeField] GameObject _ghostPlayer;
     [SerializeField] GameObject _bubble;
@@ -38,6 +39,15 @@ public class PlayerController : MonoBehaviour
     };
     
     public float GetLifeBubbleHueOffset(int i) => i < _lifeBubbleHueOffsets.Length ? _lifeBubbleHueOffsets[i] : 0;
+    
+    [SerializeField] float[] _notSelectedLifeBubbleHueOffsets = new float[4] {
+        0.0f,
+        0.5f,
+        0.825f,
+        0.285f
+    };
+    
+    public float GetNotSelectedLifeBubbleHueOffset(int i) => i < _notSelectedLifeBubbleHueOffsets.Length ? _notSelectedLifeBubbleHueOffsets[i] : 0;
     
     public LifeSpawnSelector lifeSpawnSelector => _lifeSpawnSelector;
     
@@ -156,6 +166,7 @@ public class PlayerController : MonoBehaviour
                 
                 float playerSpriteHueOffset = playerId < _playerSpriteHueOffsets.Length ? _playerSpriteHueOffsets[playerId] : 0;
                 _playerSprite.material.SetFloat(_OFFSET, playerSpriteHueOffset);
+                _ghostSprite.material.SetFloat(_OFFSET, playerSpriteHueOffset);
                 break;
             case GameState.Ended:
                 movement.gameObject.SetActive(false);

@@ -167,7 +167,11 @@ namespace Managers
         {
             for (int i = 0; i < _players.Count; i++)
             {
-                _players[i].lifeSpawnSelector.UpdateLifeBar(i, _players[i].GetLifeBubbleHueOffset(i));
+                _players[i].lifeSpawnSelector.UpdateLifeBar(
+                    i,
+                    _players[i].GetLifeBubbleHueOffset(i),
+                    _players[i].GetNotSelectedLifeBubbleHueOffset(i)
+                );
             }
         }
     }

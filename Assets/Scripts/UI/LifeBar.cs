@@ -11,6 +11,7 @@ namespace UI
         readonly List<LifeIndicator> _lifeIndicators = new();
         
         float _hueOffset;
+        float _notSelectedHueOffset;
 
         public void SetLives(int maxLives)
         {
@@ -25,7 +26,7 @@ namespace UI
             {
                 LifeIndicator lifeIndicator = Instantiate(_lifeIndicatorPrefab, transform);
                 _lifeIndicators.Add(lifeIndicator);
-                lifeIndicator.UpdateHueOffset(_hueOffset);
+                lifeIndicator.UpdateHueOffset(_hueOffset, _notSelectedHueOffset);
             }
         }
 
@@ -42,12 +43,13 @@ namespace UI
             }
         }
         
-        public void UpdateHueOffset(float offset)
+        public void UpdateHueOffset(float offset, float notSelectedOffset)
         {
             _hueOffset = offset;
+            _notSelectedHueOffset = notSelectedOffset;
             foreach (LifeIndicator lifeIndicator in _lifeIndicators)
             {
-                lifeIndicator.UpdateHueOffset(_hueOffset);
+                lifeIndicator.UpdateHueOffset(_hueOffset, _notSelectedHueOffset);
             }
         }
     }

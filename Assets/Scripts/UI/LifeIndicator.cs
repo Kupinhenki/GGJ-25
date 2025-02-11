@@ -13,6 +13,9 @@ namespace UI
         Image _img;
 
         bool _isSelected;
+        
+        float _hueOffset;
+        float _notSelectedHueOffset;
 
         void Awake()
         {
@@ -25,11 +28,19 @@ namespace UI
         {
             _isSelected = isSelected;
             _img.sprite = _isSelected ? _selected : _notSelected;
+            UpdateMaterial();
         }
 
-        public void UpdateHueOffset(float offset)
+        public void UpdateHueOffset(float offset, float notSelectedOffset)
         {
-            _img.material.SetFloat(_OFFSET, offset);
+            _hueOffset = offset;
+            _notSelectedHueOffset = notSelectedOffset;
+            UpdateMaterial();
+        }
+
+        void UpdateMaterial()
+        {
+            _img.material.SetFloat(_OFFSET, _isSelected ? _hueOffset : _notSelectedHueOffset);
         }
     }
 }
