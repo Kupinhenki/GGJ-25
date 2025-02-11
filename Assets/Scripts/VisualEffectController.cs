@@ -4,7 +4,6 @@ using UnityEngine.Rendering.Universal;
 
 public class VisualEffectController : MonoBehaviour
 {
-    [SerializeField] Camera _camera;
     [SerializeField] private Volume[] playerVolumes; // Array to store all player volumes (size 4 for max players)
     private LensDistortion[] lensDistortions;
     private ColorAdjustments[] colorAdjustments;
