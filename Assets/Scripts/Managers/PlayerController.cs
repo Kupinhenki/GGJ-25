@@ -170,6 +170,7 @@ public class PlayerController : MonoBehaviour
                 break;
             case GameState.Ended:
                 movement.gameObject.SetActive(false);
+                _playerInput.enabled = false;
                 break;
         }
     }
